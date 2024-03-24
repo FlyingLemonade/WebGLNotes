@@ -84,7 +84,7 @@ function InitDemo(){
 
    
    var circle_vertices = generateCircleForCone(0,0,.5);
-    console.log(circle_vertices.length/6);
+   console.log(circle_vertices.length/6);
    var indices = [ ];
 
    var i =0;
@@ -93,10 +93,7 @@ function InitDemo(){
        i++;
    }
 
-
-
    var circle_base_indices = [0,1,100 ,0,2,150];
-
 
     // VBO
     var circle_vbo = GL.createBuffer();

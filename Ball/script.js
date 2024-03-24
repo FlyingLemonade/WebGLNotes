@@ -1,181 +1,181 @@
-// 
-// DIAMBIL DARI CODE CUBE
-// 
+function generateSphere(x, y, z, radius, segments) {
+    var vertices = [];
+    var colors = [];
 
-function InitDemo(){
+    var ball_color = [
+        [1.0, 0.3, 0.5],
+        [0.0, 0.6, 0.0]
+    ];
 
+    for (var i = 0; i <= segments; i++) {
+        var latAngle = Math.PI * (-0.5 + (i / segments));
+        var sinLat = Math.sin(latAngle);
+        var cosLat = Math.cos(latAngle);
+
+        for (var j = 0; j <= segments; j++) {
+            var lonAngle = 2 * Math.PI * (j / segments);
+            var sinLon = Math.sin(lonAngle);
+            var cosLon = Math.cos(lonAngle);
+
+            var xCoord = cosLon * cosLat;
+            var yCoord = sinLon * cosLat;
+            var zCoord = sinLat;
+
+            var vertexX = x + radius * xCoord;
+            var vertexY = y + radius * yCoord;
+            var vertexZ = z + radius * zCoord;
+
+            vertices.push(vertexX, vertexY, vertexZ -0.5);
+
+            var colorIndex = j % ball_color.length;
+            colors = colors.concat(ball_color[colorIndex]);
+        }
+    }
+
+    var ball_faces = [];
+    for (var i = 0; i < segments; i++) {
+        for (var j = 0; j < segments; j++) {
+            var index = i * (segments + 1) + j;
+            var nextIndex = index + segments + 1;
+
+            ball_faces.push(index, nextIndex, index + 1);
+            ball_faces.push(nextIndex, nextIndex + 1, index + 1);
+        }
+    }
+
+    return { vertices: vertices, colors: colors, faces: ball_faces };
+}
+
+function main() {
     var CANVAS = document.getElementById("myCanvas");
+
     CANVAS.width = window.innerWidth;
     CANVAS.height = window.innerHeight;
 
-
     var GL;
-    try{
-    GL = CANVAS.getContext("webgl", {
-        antialias: true
-    });
-    } catch(e){
-        console.log("FAILED TO CONNECT TO WEBGL");
+    try {
+        GL = CANVAS.getContext("webgl", { antialias: true });
+        
+    } catch (e) {
+        alert("WebGL context cannot be initialized");
+        return false;
     }
 
-    // 
-    // BUAT UNIFORM BUAT Projector, View, Model dan ganti position jadi 3 dimensi
-    /*
-        1. Buat uniform matrix4
-        2. position perlu dikali dengan uniform tadi
-    */
-    // 
-    var vertex_shader_source =
-    `   attribute vec3 position;
-        attribute vec3 color;
-
-        uniform mat4 PMatrix;
-        uniform mat4 VMatrix;
-        uniform mat4 MMatrix;
-
-        varying vec3 outColor;
-        void main(){
-            gl_Position =  PMatrix *  VMatrix *MMatrix *  vec4(position , 1.0);
-            outColor = color;
+    //shaders
+    var shader_vertex_source = `
+      attribute vec3 position;
+      attribute vec3 color;
+  
+      uniform mat4 PMatrix;
+      uniform mat4 VMatrix;
+      uniform mat4 MMatrix;
+     
+      varying vec3 vColor;
+      void main(void) {
+      gl_Position = PMatrix*VMatrix*MMatrix*vec4(position, 1.);
+      vColor = color;
+      }`;
+    var shader_fragment_source = `
+      precision mediump float;
+      varying vec3 vColor;
+      // uniform vec3 color;
+      void main(void) {
+      gl_FragColor = vec4(vColor, 1.);
+     
+      }`;
+    var compile_shader = function (source, type, typeString) {
+        var shader = GL.createShader(type);
+        GL.shaderSource(shader, source);
+        GL.compileShader(shader);
+        if (!GL.getShaderParameter(shader, GL.COMPILE_STATUS)) {
+            alert("ERROR IN " + typeString + " SHADER: " + GL.getShaderInfoLog(shader));
+            return false;
         }
+        return shader;
+    };
 
-    `
+    var shader_vertex = compile_shader(shader_vertex_source, GL.VERTEX_SHADER, "VERTEX");
+    var shader_fragment = compile_shader(shader_fragment_source, GL.FRAGMENT_SHADER, "FRAGMENT");
 
-    var fragment_shader_source = 
-    `
-        precision mediump float;
-        varying vec3 outColor;
+    var SHADER_PROGRAM = GL.createProgram();
+    GL.attachShader(SHADER_PROGRAM, shader_vertex);
+    GL.attachShader(SHADER_PROGRAM, shader_fragment);
 
-        void main(){
-            gl_FragColor = vec4(outColor,1.0);
-        }
+    GL.linkProgram(SHADER_PROGRAM);
 
-    `;
+    var _color = GL.getAttribLocation(SHADER_PROGRAM, "color");
+    var _position = GL.getAttribLocation(SHADER_PROGRAM, "position");
 
-        function connect_shader(source, shader_type){
-            var shader = GL.createShader(shader_type);
-            GL.shaderSource(shader, source);
-            GL.compileShader(shader);
-            
-            return shader;
-        }
+    //uniform
+    var _PMatrix = GL.getUniformLocation(SHADER_PROGRAM, "PMatrix"); //projection
+    var _VMatrix = GL.getUniformLocation(SHADER_PROGRAM, "VMatrix"); //View
+    var _MMatrix = GL.getUniformLocation(SHADER_PROGRAM, "MMatrix"); //Model
 
-        var shader_vertex = connect_shader(vertex_shader_source, GL.VERTEX_SHADER);
-        var shader_fragment = connect_shader(fragment_shader_source, GL.FRAGMENT_SHADER);
-        var program = GL.createProgram();
-        GL.attachShader(program, shader_vertex);
-        GL.attachShader(program, shader_fragment);
-        GL.linkProgram(program);
+    GL.enableVertexAttribArray(_color);
+    GL.enableVertexAttribArray(_position);
+    GL.useProgram(SHADER_PROGRAM);
 
-        var position_vao = GL.getAttribLocation(program, "position");
-        var color_vao = GL.getAttribLocation(program, "color");
+    var tubeData = generateSphere(0, 0, .5, 1, 100); // Example sphere: x=0, y=0, z=0.5, radius=0.5, segments=50
 
+    // Create buffers
+    var TUBE_VERTEX = GL.createBuffer();
+    GL.bindBuffer(GL.ARRAY_BUFFER, TUBE_VERTEX);
+    GL.bufferData(GL.ARRAY_BUFFER, new Float32Array(tubeData.vertices), GL.STATIC_DRAW);
 
-        //  
-        // Ambil lokasi tempat uniform matrix disimpan di GPU dengan getUniformLocation di program
-        // 
-        var _PMatrix = GL.getUniformLocation(program,"PMatrix");
-        var _MMatrix = GL.getUniformLocation(program,"MMatrix");
-        var _VMatrix = GL.getUniformLocation(program,"VMatrix");
-        
-        GL.enableVertexAttribArray(position_vao);
-        GL.enableVertexAttribArray(color_vao);
-        GL.useProgram(program);
+    var TUBE_COLORS = GL.createBuffer();
+    GL.bindBuffer(GL.ARRAY_BUFFER, TUBE_COLORS);
+    GL.bufferData(GL.ARRAY_BUFFER, new Float32Array(tubeData.colors), GL.STATIC_DRAW);
 
-   
-   var circle_vertices = generateCircleForTubes(0,0,1,.4,0);
-    console.log(circle_vertices.length/6);
-   var indices = [];
+    var TUBE_FACES = GL.createBuffer();
+    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TUBE_FACES);
+    GL.bufferData(GL.ELEMENT_ARRAY_BUFFER, new Uint16Array(tubeData.faces), GL.STATIC_DRAW);
 
-   var i =0;
-   for(var j = 0; j < circle_vertices.length; j++){
-       indices.push(0, 0+i ,0-i);
-       i++;
-   }
+    //matrix
+    var PROJECTION_MATRIX = LIBS.get_projection(40, CANVAS.width / CANVAS.height, 1, 100);
+    var VIEW_MATRIX = LIBS.get_I4();
+    var MODEL_MATRIX = LIBS.get_I4();
 
+    LIBS.translateZ(VIEW_MATRIX, -5);
 
+    /*========================= DRAWING ========================= */
+    GL.clearColor(0.0, 0.0, 0.0, 0.0);
 
-
-
-    // VBO
-    var circle_vbo = GL.createBuffer();
-    GL.bindBuffer(GL.ARRAY_BUFFER, circle_vbo);
-    GL.bufferData(GL.ARRAY_BUFFER
-        , new Float32Array(circle_vertices), GL.STATIC_DRAW);
-
-    // 
-    // Ambil koordinat dari libs.js nanti untuk mengisi Proyektor, View, Model
-    // 
-
-    var Proyektor_Coordinate = LIBS.get_projection(50,CANVAS.width/CANVAS.height,1, 100);
-    var Model_Coordinate = LIBS.get_I4();
-    var View_Coordinate = LIBS.get_I4();
-
-
-    LIBS.translateZ(View_Coordinate, -5);
-    
-    // 
-    // Buat EBO untuk warna sisi block
-    // 
-
-    var circle_ebo = GL.createBuffer();
-    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, circle_ebo);
-    GL.bufferData(GL.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), GL.STATIC_DRAW);
-    
-   
-    // 
-    // Beri Efek Kedalaman agar GL tahu mana depan mana belakang
-    // 
     GL.enable(GL.DEPTH_TEST);
     GL.depthFunc(GL.LEQUAL);
 
-    var prevTime = 0;
-    function animate(time){
-        var diff = time - prevTime;
-        prevTime = time;
-        GL.clearColor(0,0,0,0);
-
-        // 
-        // GL clear depth 
-        // 
+    var time_prev = 0;
+    var animate = function (time) {
+        GL.viewport(0, 0, CANVAS.width, CANVAS.height);
         GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
 
-        // 
-        // Beri Rotasi
-        // 
-        // LIBS.rotateZ(Model_Coordinate, LIBS.degToRad(10*diff/1000));
-        // LIBS.rotateY(Model_Coordinate, LIBS.degToRad(50*diff/1000));
-        LIBS.rotateX(Model_Coordinate, LIBS.degToRad(50*diff/1000));
+        var dt = time - time_prev;
+        time_prev = time;
 
-        GL.bindBuffer(GL.ARRAY_BUFFER, circle_vbo);
-        GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, circle_ebo);
-        
-        GL.vertexAttribPointer(position_vao, 3, GL.FLOAT,false,6*4, 0);
-        GL.vertexAttribPointer(color_vao, 3, GL.FLOAT,false,6*4, 6*4);
+        //LIBS.rotateZ(MODEL_MATRIX, dt * LIBS.degToRad(0.1));
+        //LIBS.rotateX(MODEL_MATRIX, dt * LIBS.degToRad(0.1));
+        LIBS.rotateY(MODEL_MATRIX, dt * LIBS.degToRad(0.1));
 
-        // 
-        // Hubungin Uniform dengan koordinat tadi dengan uniformMatrix4fv
-        // 
-        GL.uniformMatrix4fv(_PMatrix,false,Proyektor_Coordinate);
-        GL.uniformMatrix4fv(_MMatrix,false,Model_Coordinate);
-        GL.uniformMatrix4fv(_VMatrix,false,View_Coordinate);
+        GL.bindBuffer(GL.ARRAY_BUFFER, TUBE_VERTEX);
+        GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
 
+        GL.bindBuffer(GL.ARRAY_BUFFER, TUBE_COLORS);
+        GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
 
-        GL.drawArrays(GL.LINE_LOOP, 0, circle_vertices.length/3);
-        GL.drawElements(GL.LINES,indices.length,  GL.UNSIGNED_SHORT, 0);
+        GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TUBE_FACES);
 
+        GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+        GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+        GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
 
-
-
-        // GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, circle_base);
-        // GL.vertexAttribPointer(color_vao, 3, GL.FLOAT,false,6*4, 3*4);
-        // GL.drawElements(GL.TRIANGLES,circle_base_indices.length,  GL.UNSIGNED_SHORT, 0);
+        GL.drawElements(GL.TRIANGLES, tubeData.faces.length, GL.UNSIGNED_SHORT, 0);
 
         GL.flush();
 
-
         window.requestAnimationFrame(animate);
-    }
-    animate(0);
+    };
 
+    animate(0);
 }
+
+
+window.addEventListener('load', main);
