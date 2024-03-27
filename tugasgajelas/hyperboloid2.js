@@ -1,31 +1,61 @@
-var vertex = [];
-var faces = [];
+function setHyperboloid2Sheet(a, b, c, segments) {
+  var vertices = [];
+  var faces = [];
+  var colors = [];
 
-function setHyperboloid2Sheet() {
-  // upper
-  for (let u = -Math.PI / 2; u <= Math.PI / 2; u += Math.PI / 30) {
-    for (let v = -Math.PI / 2; v < Math.PI / 2; v += Math.PI / 30) {
-      let x = 0.5 * Math.tan(v) * Math.cos(u);
-      let y = 0.5 * Math.tan(v) * Math.sin(u);
-      let z = 0.5 * (1 / Math.cos(v));
+  // Upper sheet
+  for (var i = 0; i <= segments; i++) {
+    var u = -Math.PI / 2 + (2 * Math.PI * i) / segments;
 
-      vertex.push(x, y, z);
-      vertex.push(0, 0, 1); // Color for each vertex
+    for (var j = 0; j <= segments; j++) {
+      var v = -Math.PI / 2 + ((Math.PI / 2) * j) / segments;
+
+      var xCoord = (a * Math.tan(v)) * Math.cos(u);
+      var yCoord = (b * Math.tan(v)) * Math.sin(u);
+      var zCoord = c * 1 / Math.cos(v);
+
+      vertices.push(xCoord, yCoord, zCoord);
+
+      colors.push(0.0, 1.0, 0.0);
     }
   }
 
-  // lower
-  for (let u = Math.PI / 2; u <= (3 * Math.PI) / 2; u += Math.PI / 15) {
-    for (let v = -Math.PI / 2; v < Math.PI / 2; v += Math.PI / 30) {
-      let x = 0.5 * Math.tan(v) * Math.cos(u);
-      let y = 0.5 * Math.tan(v) * Math.sin(u);
-      let z = -0.5 * (1 / Math.cos(v));
+  // Lower sheet
+  for (var i = 0; i <= segments; i++) {
+    var u = -Math.PI / 2 + (2 * Math.PI * i) / segments;
 
-      vertex.push(x, y, z);
-      vertex.push(0, 0, 1); // Color for each vertex
+    for (var j = 0; j <= segments; j++) {
+      var v = -Math.PI / 2 + ((Math.PI / 2) * j) / segments;
+
+      var xCoord = (a * Math.tan(v)) * Math.cos(u);
+      var yCoord = (b * Math.tan(v)) * Math.sin(u);
+      var zCoord = -c * 1 / Math.cos(v); // Negate z-coordinate for lower sheet
+
+      vertices.push(xCoord, yCoord, zCoord);
+
+      colors.push(1.0, 0.0, 0.0); // Use different color for lower sheet
     }
   }
+
+  // Faces (triangles)
+  for (var i = 0; i < segments; i++) {
+    for (var j = 0; j < segments; j++) {
+      var index = i * (segments + 1) + j;
+      var nextIndex = index + segments + 1;
+
+      // Upper sheet
+      faces.push(index, nextIndex, index + 1);
+      faces.push(nextIndex, nextIndex + 1, index + 1);
+
+      // Lower sheet
+      faces.push(index + (segments + 1) * (segments + 1), index + (segments + 1) * (segments + 1) + 1, nextIndex + (segments + 1) * (segments + 1));
+      faces.push(nextIndex + (segments + 1) * (segments + 1), index + (segments + 1) * (segments + 1) + 1, nextIndex + (segments + 1) * (segments + 1) + 1);
+    }
+  }
+
+  return { vertex: vertices, colors: colors, faces: faces };
 }
+
 
 function main() {
   var CANVAS = document.getElementById("myCanvas");
@@ -44,7 +74,7 @@ function main() {
     drag = true;
     x_prev = e.pageX;
     y_prev = e.pageY;
-    e.preventDefault(); //mencegah fungsi awal dri tombol yg di klik, misal klik kanan biasa keluarin inspect dkk tpi itu bisa dibatesi
+    // e.preventDefault(); //mencegah fungsi awal dri tombol yg di klik, misal klik kanan biasa keluarin inspect dkk tpi itu bisa dibatesi
     return false;
   };
 
@@ -60,7 +90,7 @@ function main() {
     PHI += dY;
     x_prev = e.pageX;
     y_prev = e.pageY;
-    e.preventDefault();
+    // e.preventDefault();
   };
 
   CANVAS.addEventListener("mousedown", mouseDown, false); //selama mouse ditekan
@@ -143,22 +173,22 @@ function main() {
 
   GL.useProgram(SHADER_PROGRAM);
 
-  setHyperboloid2Sheet();
+  var hyperboloid = setHyperboloid2Sheet(2,2,2,100);
 
   // buffer itu buat ngehandle ke layar
   var VERTEX = GL.createBuffer();
   GL.bindBuffer(GL.ARRAY_BUFFER, VERTEX);
-  GL.bufferData(GL.ARRAY_BUFFER, new Float32Array(vertex), GL.STATIC_DRAW);
+  GL.bufferData(GL.ARRAY_BUFFER, new Float32Array(hyperboloid.vertex), GL.STATIC_DRAW);
 
-  //FACES
-  for (let i = 1; i < vertex.length; i++) {
-    faces.push(i);
-  }
+  var COLORS = GL.createBuffer();
+  GL.bindBuffer(GL.ARRAY_BUFFER, COLORS);
+  GL.bufferData(GL.ARRAY_BUFFER, new Float32Array(hyperboloid.colors), GL.STATIC_DRAW);
+
   var FACES = GL.createBuffer();
   GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, FACES);
   GL.bufferData(
     GL.ELEMENT_ARRAY_BUFFER,
-    new Uint16Array(faces),
+    new Uint16Array(hyperboloid.faces),
     GL.STATIC_DRAW
   );
 
@@ -184,7 +214,7 @@ function main() {
   var animate = function (time) {
     if (time > 0) {
       var dt = time - time_prev;
-      console.log(dt);
+      
       if (!drag) {
         dX *= AMORTIZATION;
         dY *= AMORTIZATION;
@@ -200,19 +230,25 @@ function main() {
     GL.viewport(0, 0, CANVAS.width, CANVAS.height);
     GL.clear(GL.COLOR_BUFFER_BIT);
 
-    GL.uniformMatrix4fv(_Pmatrix, false, PROJMATRIX);
-    GL.uniformMatrix4fv(_Vmatrix, false, VIEWMATRIX);
-    GL.uniformMatrix4fv(_Mmatrix, false, MOVEMATRIX);
+
 
     //DRAWINGS
     //DRAWING TRIANGLE
     GL.bindBuffer(GL.ARRAY_BUFFER, VERTEX);
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
 
-    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 4 * (3 + 3), 0);
-    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 4 * (3 + 3), 3 * 4);
-
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+    GL.bindBuffer(GL.ARRAY_BUFFER, COLORS);
+    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+    
     GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, FACES);
-    GL.drawElements(GL.TRIANGLES, faces.length, GL.UNSIGNED_SHORT, 0);
+
+    GL.uniformMatrix4fv(_Pmatrix, false, PROJMATRIX);
+    GL.uniformMatrix4fv(_Vmatrix, false, VIEWMATRIX);
+    GL.uniformMatrix4fv(_Mmatrix, false, MOVEMATRIX);
+
+    GL.drawElements(GL.TRIANGLES, hyperboloid.faces.length, GL.UNSIGNED_SHORT, 0);
+
 
     GL.flush();
     window.requestAnimationFrame(animate);
