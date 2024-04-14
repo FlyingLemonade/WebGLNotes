@@ -220,7 +220,7 @@ function main() {
     GL.vertexAttribPointer(_uv, 2, GL.FLOAT, false, 4*(3+3+2), (3+3)*4);
 
     GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, DRAGON_FACES);
-    GL.drawElements(GL.TRIANGLES, DRAGON_POINTSCOUNT, GL.UNSIGNED_INT, 0);
+    GL.drawElements(GL.LINES, DRAGON_POINTSCOUNT, GL.UNSIGNED_INT, 0);
 
     GL.flush();
     window.requestAnimationFrame(animate);

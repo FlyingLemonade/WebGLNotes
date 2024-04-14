@@ -74,7 +74,7 @@ function main() {
   GL.useProgram(SHADER_PROGRAM);
 
   // Define number of triangles for the cone
-  var num_triangles = 100;
+  var num_triangles = 50;
   var angle_increment = (2 * Math.PI) / num_triangles;
   var radius = 0.5;
   var height = 1.0;
