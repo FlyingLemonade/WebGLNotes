@@ -57,7 +57,64 @@ function generateTorus(x, y, z, c1, c2, c3, radius1, radius2, segments1, segment
 
   return { vertices: vertices, colors: colors, faces: faces };
 }
-
+function generateElipticParabloid(x, y, z, c1, c2, c3, a, b, c, segments, rotationX, rotationY, rotationZ) {
+    var vertices = [];
+    var colors = [];
+  
+    for (var i = 0; i <= segments; i++) {
+        var u = -Math.PI + (2 * Math.PI * i) / segments;
+  
+        for (var j = 0; j <= segments; j++) {
+            var v = (2 * j) / segments;
+  
+            var xCoord = x + (a * v * Math.cos(u));
+            var yCoord = y + (b * v * Math.sin(u));
+            var zCoord = z + (c * Math.pow(v, 2));
+  
+            // Apply rotations
+            var rotatedX = xCoord - x;
+            var rotatedY = yCoord - y;
+            var rotatedZ = zCoord - z;
+  
+            // Rotate around X axis
+            var tempY = rotatedY;
+            rotatedY = tempY * Math.cos(rotationX) + rotatedZ * Math.sin(rotationX);
+            rotatedZ = -tempY * Math.sin(rotationX) + rotatedZ * Math.cos(rotationX);
+  
+            // Rotate around Y axis
+            var tempX = rotatedX;
+            rotatedX = tempX * Math.cos(rotationY) - rotatedZ * Math.sin(rotationY);
+            rotatedZ = tempX * Math.sin(rotationY) + rotatedZ * Math.cos(rotationY);
+  
+            // Rotate around Z axis
+            var tempX2 = rotatedX;
+            rotatedX = tempX2 * Math.cos(rotationZ) + rotatedY * Math.sin(rotationZ);
+            rotatedY = -tempX2 * Math.sin(rotationZ) + rotatedY * Math.cos(rotationZ);
+  
+            // Translate the vertex back to its original position
+            rotatedX += x;
+            rotatedY += y;
+            rotatedZ += z;
+  
+            vertices.push(rotatedX, rotatedY, rotatedZ);
+  
+            colors.push(c1, c2, c3);
+        }
+    }
+  
+    var faces = [];
+    for (var i = 0; i < segments; i++) {
+        for (var j = 0; j < segments; j++) {
+            var index = i * (segments + 1) + j;
+            var nextIndex = index + segments + 1;
+  
+            faces.push(index, nextIndex, index + 1);
+            faces.push(nextIndex, nextIndex + 1, index + 1);
+        }
+    }
+  
+    return { vertices: vertices, colors: colors, faces: faces };
+}
 
 
 

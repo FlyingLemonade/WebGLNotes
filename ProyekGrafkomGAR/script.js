@@ -186,7 +186,8 @@ function main() {
   // 
   // TELINGA
   // 
-
+  var telinga1 = generateElipticParabloid(.2, 7.2, 1, bodyColor[0], bodyColor[1], bodyColor[2], .6, .6, .4, 100, 1.6, 0, -2.6);
+  var telinga2 = generateElipticParabloid(-3.5, 7.2, 1, bodyColor[0], bodyColor[1], bodyColor[2], .6, .6, .4, 100, 1.6, 0, 2.6);
 
   // 
   // MATA
@@ -195,7 +196,8 @@ function main() {
   var mata2 = generateEllipsoid(-2.3, 4.8, 3.2 , .2, .3, .2, eyeColor[3], eyeColor[4], eyeColor[5], 100);
   var mata3 = generateEllipsoid(-.8 , 5, 3 , .5, .6, .2, eyeColor[0], eyeColor[1], eyeColor[2], 100);
   var mata4 = generateEllipsoid(-.8, 4.8, 3.2 , .2, .3, .2, eyeColor[3], eyeColor[4], eyeColor[5], 100);
-
+  var mata5 = generateElipticParabloid(-1, 5.6, 3, bodyColor[0], bodyColor[1], bodyColor[2], .3, .2, .1, 100, 1.6, 0, -3.6);
+  var mata6 = generateElipticParabloid(-2.1, 5.6, 3, bodyColor[0], bodyColor[1], bodyColor[2], .3, .2, .1, 100, 1.6, 0, 3.6);
   // 
   // MULUT
   // 
@@ -345,11 +347,24 @@ function main() {
   var MATA4_COLORS = createColorBuffer(GL, mata4);
   var MATA4_FACES = createFacesBuffer(GL, mata4);
 
+  var MATA5_VERTEX = createVertexBuffer(GL, mata5);
+  var MATA5_COLORS = createColorBuffer(GL, mata5);
+  var MATA5_FACES = createFacesBuffer(GL, mata5);
+
+  var MATA6_VERTEX = createVertexBuffer(GL, mata6);
+  var MATA6_COLORS = createColorBuffer(GL, mata6);
+  var MATA6_FACES = createFacesBuffer(GL, mata6);
 
   // 
   // TELINGA
   // 
+  var TELINGA1_VERTEX = createVertexBuffer(GL, telinga1);
+  var TELINGA1_COLORS = createColorBuffer(GL, telinga1);
+  var TELINGA1_FACES = createFacesBuffer(GL, telinga1);
 
+  var TELINGA2_VERTEX = createVertexBuffer(GL, telinga2);
+  var TELINGA2_COLORS = createColorBuffer(GL, telinga2);
+  var TELINGA2_FACES = createFacesBuffer(GL, telinga2);
 
   // 
   // MULUT
@@ -734,6 +749,41 @@ function main() {
     
     GL.drawElements(GL.TRIANGLES, kepala2.faces.length, GL.UNSIGNED_SHORT, 0);
 
+    // 
+    // TELINGA
+    // 
+
+    // Kanan
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, TELINGA1_VERTEX);
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+    
+    GL.bindBuffer(GL.ARRAY_BUFFER, TELINGA1_COLORS);
+    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+    
+    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TELINGA1_FACES);
+    
+    GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+    GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    
+    GL.drawElements(GL.TRIANGLES, telinga1.faces.length, GL.UNSIGNED_SHORT, 0);
+
+    // Kiri
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, TELINGA2_VERTEX);
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+    
+    GL.bindBuffer(GL.ARRAY_BUFFER, TELINGA2_COLORS);
+    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+    
+    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TELINGA2_FACES);
+    
+    GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+    GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    
+    GL.drawElements(GL.TRIANGLES, telinga2.faces.length, GL.UNSIGNED_SHORT, 0);
 
     // 
     // MULUT 
@@ -906,6 +956,37 @@ function main() {
 
     GL.drawElements(GL.TRIANGLES, mata4.faces.length, GL.UNSIGNED_SHORT, 0);
 
+    // KELOPAK
+    GL.bindBuffer(GL.ARRAY_BUFFER, MATA5_VERTEX);
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, MATA5_COLORS);
+    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, MATA5_FACES);
+
+    GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+    GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+
+    GL.drawElements(GL.TRIANGLES, mata5.faces.length, GL.UNSIGNED_SHORT, 0);
+
+    
+    // KELOPAK
+    GL.bindBuffer(GL.ARRAY_BUFFER, MATA6_VERTEX);
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, MATA6_COLORS);
+    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, MATA6_FACES);
+
+    GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+    GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+
+    GL.drawElements(GL.TRIANGLES, mata6.faces.length, GL.UNSIGNED_SHORT, 0);
+    
 
     // HIDUNG
     GL.bindBuffer(GL.ARRAY_BUFFER, HIDUNG_VERTEX);
