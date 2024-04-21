@@ -281,3 +281,97 @@ function generateSphere(x, y, z, c1, c2, c3, radius, segments) {
     return { vertices: vertices, colors: colors, faces: faces };
   }
   
+  function generateWorld(width, length, height) {
+    var vertices = [];
+    var colors = [];
+    var faces = [];
+    var worldColors = [0, 1, 0];
+
+
+    var halfWidth = width / 2;
+    var halfLength = length / 2;
+    var halfHeight = height / 2;
+
+    vertices = [
+        // Front face
+        -halfWidth,  halfHeight,  halfLength,
+        -halfWidth, -halfHeight,  halfLength,
+         halfWidth, -halfHeight,  halfLength,
+         halfWidth,  halfHeight,  halfLength,
+
+        // Back face
+        -halfWidth,  halfHeight, -halfLength,
+        -halfWidth, -halfHeight, -halfLength,
+         halfWidth, -halfHeight, -halfLength,
+         halfWidth,  halfHeight, -halfLength 
+    ];
+
+    colors = [
+        worldColors[0], worldColors[1], worldColors[2], 
+        worldColors[0], worldColors[1], worldColors[2], 
+        worldColors[0], worldColors[1], worldColors[2], 
+        worldColors[0], worldColors[1], worldColors[2], 
+        worldColors[0], worldColors[1], worldColors[2], 
+        worldColors[0], worldColors[1], worldColors[2], 
+        worldColors[0], worldColors[1], worldColors[2], 
+        worldColors[0], worldColors[1], worldColors[2]  
+    ];
+
+    faces = [
+        0, 1, 2, 0, 2, 3, 
+        4, 5, 6, 4, 6, 7, 
+        0, 4, 7, 0, 7, 3, 
+        1, 5, 6, 1, 6, 2, 
+        0, 1, 5, 0, 5, 4,
+        3, 2, 6, 3, 6, 7  
+    ];
+
+    return { vertices: vertices, colors: colors, faces: faces };
+}
+
+    function generateCube(x, y, z, c1, c2, c3, width, length, height) {
+        var vertices = [];
+        var colors = [];
+        var faces = [];
+        var blockColors = [c1,c2,c3];
+        var halfWidth = width / 2;
+        var halfLength = length / 2;
+        var halfHeight = height / 2;
+    
+        vertices = [
+            // Front face
+            x + -halfWidth, y +  halfHeight, z + halfLength,
+            x + -halfWidth, y + -halfHeight, z + halfLength,
+            x +  halfWidth, y + -halfHeight, z + halfLength,
+            x +  halfWidth, y +  halfHeight, z + halfLength,
+    
+            // Back face
+            x + -halfWidth, y + halfHeight, z + -halfLength,
+            x + -halfWidth, y + -halfHeight, z + -halfLength,
+            x +  halfWidth, y + -halfHeight, z + -halfLength,
+            x +  halfWidth, y + halfHeight, z + -halfLength 
+        ];
+    
+        colors = [
+            blockColors[0], blockColors[1], blockColors[2], 
+            blockColors[0], blockColors[1], blockColors[2], 
+            blockColors[0], blockColors[1], blockColors[2], 
+            blockColors[0], blockColors[1], blockColors[2], 
+            blockColors[0], blockColors[1], blockColors[2], 
+            blockColors[0], blockColors[1], blockColors[2], 
+            blockColors[0], blockColors[1], blockColors[2], 
+            blockColors[0], blockColors[1], blockColors[2]  
+        ];
+    
+        faces = [
+            0, 1, 2, 0, 2, 3, 
+            4, 5, 6, 4, 6, 7, 
+            0, 4, 7, 0, 7, 3, 
+            1, 5, 6, 1, 6, 2, 
+            0, 1, 5, 0, 5, 4,
+            3, 2, 6, 3, 6, 7  
+        ];
+    
+        return { vertices: vertices, colors: colors, faces: faces };
+    }
+

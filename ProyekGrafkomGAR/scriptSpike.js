@@ -1,24 +1,3 @@
-function createVertexBuffer(GL, data){
-  var VERTEX = GL.createBuffer();
-  GL.bindBuffer(GL.ARRAY_BUFFER, VERTEX);
-  GL.bufferData(GL.ARRAY_BUFFER, new Float32Array(data.vertices), GL.STATIC_DRAW);
-  return VERTEX;
-}
-
-function createFacesBuffer(GL, data){
-  var FACES = GL.createBuffer();
-  GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, FACES);
-  GL.bufferData(GL.ELEMENT_ARRAY_BUFFER, new Uint16Array(data.faces), GL.STATIC_DRAW);
-  return FACES;
-}
-
-function createColorBuffer(GL, data){
-  var COLORS = GL.createBuffer();
-  GL.bindBuffer(GL.ARRAY_BUFFER, COLORS);
-  GL.bufferData(GL.ARRAY_BUFFER, new Float32Array(data.colors), GL.STATIC_DRAW);
-  return COLORS;
-}
-
 function main() {
   var CANVAS = document.getElementById("myCanvas");
 
@@ -138,32 +117,32 @@ function main() {
   // 
   var bodyColor = [181/255, 123/255, 107/255]
   var bodyColor2 = [232/255, 196/255, 174/255]
-  var collarColor = [240/255, 131/255, 134/255]
+
   var eyeColor = [235/255, 236/255, 240/255, 42/255, 42/255, 39/255]
 
   // 
   //  TANGAN KIRI
   // 
-  var tanganKiri1 = generateSphere(-5.6, 2, .55, bodyColor[0], bodyColor[1], bodyColor[2], 1.2, 50);
-  var tanganKiri2 = generateTube(-5.6, -1.4, .05, bodyColor[0], bodyColor[1], bodyColor[2], 3, .8, 1.2, 100);
-  var tanganKiri3 = generateSphere(-5.6, -1.5, .55, bodyColor[0], bodyColor[1], bodyColor[2], .75, 50);
+  var tanganKiri1 = generateSphere(-5.6, 2, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
+  var tanganKiri2 = generateTube(-5.6, -1.4, .05, bodyColor[0], bodyColor[1], bodyColor[2], 3, .8, .8, 100);
+  var tanganKiri3 = generateSphere(-5.6, -1.5, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
   var tanganKiri4 = generateTube(-5.6, -3.6, .05, bodyColor[0], bodyColor[1], bodyColor[2], 1.6, .6, .6, 100);
   var tanganKiri5 = generateSphere(-5.6, -3.9, .55, bodyColor[0], bodyColor[1], bodyColor[2], .6, 50);
 
   // 
   // TANGAN KANAN
   // 
-  var tanganKanan1 = generateSphere(2.1, 2, .55, bodyColor[0], bodyColor[1], bodyColor[2], 1.2, 50);
-  var tanganKanan2 = generateTube(2.1, -1.4, .05, bodyColor[0], bodyColor[1], bodyColor[2], 3, .8, 1.2, 100);
-  var tanganKanan3 = generateSphere(2.1, -1.5, .55, bodyColor[0], bodyColor[1], bodyColor[2], .75, 50);
+  var tanganKanan1 = generateSphere(2.1, 2, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
+  var tanganKanan2 = generateTube(2.1, -1.4, .05, bodyColor[0], bodyColor[1], bodyColor[2], 3, .8, .8, 100);
+  var tanganKanan3 = generateSphere(2.1, -1.5, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
   var tanganKanan4 = generateTube(2.1, -3.6, .05, bodyColor[0], bodyColor[1], bodyColor[2], 1.6, .6, .6, 100);
   var tanganKanan5 = generateSphere(2.1, -3.9, .55, bodyColor[0], bodyColor[1], bodyColor[2], .6, 50);
 
   // 
   // BADAN
   // 
-  var badan1 = generateTube(-1.65, -2.8, 0, bodyColor[0], bodyColor[1], bodyColor[2], 5, 2, 3, 100);
-  var badan2 = generateTube(-1.6, -2.8, 0.9, bodyColor2[0], bodyColor2[1], bodyColor2[2], 4.3, 1.4, 2.2, 100);
+  var badan1 = generateTube(-1.65, -2.8, 0, bodyColor[0], bodyColor[1], bodyColor[2], 5, 2, 2.4, 100);
+  var badan2 = generateTube(-1.6, -2.8, 0.9, bodyColor2[0], bodyColor2[1], bodyColor2[2], 4.3, 1.2, 1.8, 100);
 
   // 
   // BADAN BAWAH
@@ -173,8 +152,7 @@ function main() {
   // 
   // LEHER 
   //
-  var leher1 = generateTube(-1.65, 2.2, 0, bodyColor[0], bodyColor[1], bodyColor[2], 1, 3, 1, 100);
-  var leher2 = generateTorus(-1.65, 3.1, .6, collarColor[0], collarColor[1], collarColor[2], 1.8, .3, 100, 100, 2, 0, 0);
+  var leher1 = generateTube(-1.65, 2.2, 0, bodyColor[0], bodyColor[1], bodyColor[2], 1, 2.4, 1, 100);
 
   // 
   // KEPALA 
@@ -303,10 +281,6 @@ function main() {
   var LEHER1_VERTEX = createVertexBuffer(GL, leher1);
   var LEHER1_COLORS = createColorBuffer(GL, leher1);
   var LEHER1_FACES = createFacesBuffer(GL, leher1);
-
-  var LEHER2_VERTEX = createVertexBuffer(GL, leher2);
-  var LEHER2_COLORS = createColorBuffer(GL, leher2);
-  var LEHER2_FACES = createFacesBuffer(GL, leher2);
 
   // 
   // KEPALA
@@ -479,11 +453,6 @@ function main() {
   GL.enable(GL.DEPTH_TEST);
   GL.depthFunc(GL.LEQUAL);
 
-  var translation = [0, 0, -360];
-  var rotation = [LIBS.degToRad(190), LIBS.degToRad(40), LIBS.degToRad(320)];
-  var scale = [1, 1, 1];
-  var fieldOfViewRadians = LIBS.degToRad(60);
-  var rotationSpeed = 1.2;
 
   var then = 0;
 
@@ -510,7 +479,7 @@ function main() {
   // 
   // DRAW
   // 
-  var animate = function (time) {
+  var animateSpike = function (time) {
     GL.viewport(0, 0, CANVAS.width, CANVAS.height);
     GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
   
@@ -921,22 +890,6 @@ function main() {
     
     GL.drawElements(GL.TRIANGLES, leher1.faces.length, GL.UNSIGNED_SHORT, 0);
 
-    // Collar
-    GL.bindBuffer(GL.ARRAY_BUFFER, LEHER2_VERTEX);
-    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
-    
-    GL.bindBuffer(GL.ARRAY_BUFFER, LEHER2_COLORS);
-    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
-    
-    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, LEHER2_FACES);
-    
-    GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
-    GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, BADAN_MATRIX);
-    
-    GL.drawElements(GL.TRIANGLES, leher2.faces.length, GL.UNSIGNED_SHORT, 0);
-
-
     // 
     // KEPALA
     // 
@@ -1309,10 +1262,11 @@ function main() {
     GL.drawElements(GL.TRIANGLES, kakiKanan5.faces.length, GL.UNSIGNED_SHORT, 0);
     GL.flush();
 
-    window.requestAnimationFrame(animate);
+    window.requestAnimationFrame(animateSpike);
+    console.log("s")
   };
 
-  animate(0);
+  animateSpike(0);
 }
 
 window.addEventListener("load", main);

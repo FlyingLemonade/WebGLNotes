@@ -1,25 +1,4 @@
-function createVertexBuffer(GL, data){
-    var VERTEX = GL.createBuffer();
-    GL.bindBuffer(GL.ARRAY_BUFFER, VERTEX);
-    GL.bufferData(GL.ARRAY_BUFFER, new Float32Array(data.vertices), GL.STATIC_DRAW);
-    return VERTEX;
-  }
-  
-  function createFacesBuffer(GL, data){
-    var FACES = GL.createBuffer();
-    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, FACES);
-    GL.bufferData(GL.ELEMENT_ARRAY_BUFFER, new Uint16Array(data.faces), GL.STATIC_DRAW);
-    return FACES;
-  }
-  
-  function createColorBuffer(GL, data){
-    var COLORS = GL.createBuffer();
-    GL.bindBuffer(GL.ARRAY_BUFFER, COLORS);
-    GL.bufferData(GL.ARRAY_BUFFER, new Float32Array(data.colors), GL.STATIC_DRAW);
-    return COLORS;
-  }
-  
-  function main() {
+function main() {
     var CANVAS = document.getElementById("myCanvas");
   
     CANVAS.width = window.innerWidth;
@@ -41,14 +20,14 @@ function createVertexBuffer(GL, data){
       drag = true;
       x_prev = e.pageX;
       y_prev = e.pageY;
-      console.log("DOWN");
+      
     };
     var mouseUP = function (e) {
       drag = false;
-      console.log("UP");
+  
     };
     var mouseOut = function (e) {
-      console.log("OUTTT");
+  
     };
     var mouseMove = function (e) {
       if (!drag) {
@@ -58,7 +37,6 @@ function createVertexBuffer(GL, data){
       dx = e.pageX - x_prev;
       dy = e.pageY - y_prev;
   
-      console.log(dx + " " + dy);
       x_prev = e.pageX;
       y_prev = e.pageY;
   
@@ -139,32 +117,32 @@ function createVertexBuffer(GL, data){
     // 
     var bodyColor = [181/255, 123/255, 107/255]
     var bodyColor2 = [232/255, 196/255, 174/255]
-    var collarColor = [240/255, 131/255, 134/255]
+    var earColor = [255/255, 206/255, 199/255]
     var eyeColor = [235/255, 236/255, 240/255, 42/255, 42/255, 39/255]
   
     // 
     //  TANGAN KIRI
     // 
-    var tanganKiri1 = generateSphere(-5.6, 2, .55, bodyColor[0], bodyColor[1], bodyColor[2], 1.2, 50);
-    var tanganKiri2 = generateTube(-5.6, -1.4, .05, bodyColor[0], bodyColor[1], bodyColor[2], 3, .8, 1.2, 100);
-    var tanganKiri3 = generateSphere(-5.6, -1.5, .55, bodyColor[0], bodyColor[1], bodyColor[2], .75, 50);
-    var tanganKiri4 = generateTube(-5.6, -3.6, .05, bodyColor[0], bodyColor[1], bodyColor[2], 1.6, .6, .6, 100);
-    var tanganKiri5 = generateSphere(-5.6, -3.9, .55, bodyColor[0], bodyColor[1], bodyColor[2], .6, 50);
+    var tanganKiri1 = generateSphere(-4.7, 2, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
+    var tanganKiri2 = generateTube(-4.7, -1.4, .05, bodyColor[0], bodyColor[1], bodyColor[2], 3, .8, .8, 100);
+    var tanganKiri3 = generateSphere(-4.7, -1.5, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
+    var tanganKiri4 = generateTube(-4.7, -3.6, .05, bodyColor[0], bodyColor[1], bodyColor[2], 1.6, .6, .6, 100);
+    var tanganKiri5 = generateSphere(-4.7, -3.9, .55, bodyColor[0], bodyColor[1], bodyColor[2], .6, 50);
   
     // 
     // TANGAN KANAN
     // 
-    var tanganKanan1 = generateSphere(2.1, 2, .55, bodyColor[0], bodyColor[1], bodyColor[2], 1.2, 50);
-    var tanganKanan2 = generateTube(2.1, -1.4, .05, bodyColor[0], bodyColor[1], bodyColor[2], 3, .8, 1.2, 100);
-    var tanganKanan3 = generateSphere(2.1, -1.5, .55, bodyColor[0], bodyColor[1], bodyColor[2], .75, 50);
-    var tanganKanan4 = generateTube(2.1, -3.6, .05, bodyColor[0], bodyColor[1], bodyColor[2], 1.6, .6, .6, 100);
-    var tanganKanan5 = generateSphere(2.1, -3.9, .55, bodyColor[0], bodyColor[1], bodyColor[2], .6, 50);
+    var tanganKanan1 = generateSphere(1.4, 2, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
+    var tanganKanan2 = generateTube(1.4, -1.4, .05, bodyColor[0], bodyColor[1], bodyColor[2], 3, .8, .8, 100);
+    var tanganKanan3 = generateSphere(1.4, -1.5, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
+    var tanganKanan4 = generateTube(1.4, -3.6, .05, bodyColor[0], bodyColor[1], bodyColor[2], 1.6, .6, .6, 100);
+    var tanganKanan5 = generateSphere(1.4, -3.9, .55, bodyColor[0], bodyColor[1], bodyColor[2], .6, 50);
   
     // 
     // BADAN
     // 
-    var badan1 = generateTube(-1.65, -2.8, 0, bodyColor[0], bodyColor[1], bodyColor[2], 5, 2, 3, 100);
-    var badan2 = generateTube(-1.6, -2.8, 0.9, bodyColor2[0], bodyColor2[1], bodyColor2[2], 4.3, 1.4, 2.2, 100);
+    var badan1 = generateTube(-1.65, -2.8, 0, bodyColor[0], bodyColor[1], bodyColor[2], 5, 2, 2.4, 100);
+    var badan2 = generateTube(-1.6, -2.8, 0.9, bodyColor2[0], bodyColor2[1], bodyColor2[2], 4.3, 1.2, 1.8, 100);
   
     // 
     // BADAN BAWAH
@@ -174,40 +152,40 @@ function createVertexBuffer(GL, data){
     // 
     // LEHER 
     //
-    var leher1 = generateTube(-1.65, 2.2, 0, bodyColor[0], bodyColor[1], bodyColor[2], 1, 3, 1, 100);
-    var leher2 = generateTorus(-1.65, 3.1, .6, collarColor[0], collarColor[1], collarColor[2], 1.8, .3, 100, 100, 2, 0, 0);
+    var leher1 = generateTube(-1.65, 2.2, 0, bodyColor[0], bodyColor[1], bodyColor[2], 1, 2.4, 1, 100);
   
     // 
     // KEPALA 
     //
-    var kepala1 = generateTorus(-1.65, 3.8, 1, bodyColor2[0], bodyColor2[1], bodyColor2[2], 1.2, 1.2, 100, 100, 1.55, 0, 0);
-    var kepala2 = generateTorus(-1.65, 4.8, 1, bodyColor[0], bodyColor[1], bodyColor[2], .1, 2, 100, 100, 1.55, 0, 0);
+    var kepala1 = generateTorus(-1.65, 4.8, 1, bodyColor[0], bodyColor[1], bodyColor[2], .1, 2.6, 100, 100, 1.55, 0, 0);
   
     // 
     // TELINGA
     // 
-    var telinga1 = generateElipticParabloid(.2, 7.2, 1, bodyColor[0], bodyColor[1], bodyColor[2], .6, .6, .4, 100, 1.6, 0, -2.6);
-    var telinga2 = generateElipticParabloid(-3.5, 7.2, 1, bodyColor[0], bodyColor[1], bodyColor[2], .6, .6, .4, 100, 1.6, 0, 2.6);
+    var telinga1 = generateElipticParabloid(1.7, 7.6, .4, bodyColor[0], bodyColor[1], bodyColor[2], 1.3, .4, 1, 100, 1.3, 0, -2.27);
+    var telinga2 = generateElipticParabloid(-5, 7.6, .4, bodyColor[0], bodyColor[1], bodyColor[2], 1.3, .4, 1, 100, 1.3, 0, 2.27);
+    var telinga3 = generateElipticParabloid(1.7, 7.6, .8, earColor[0], earColor[1], earColor[2], 1, .2, 1, 100, 1.3, 0, -2.35);
+    var telinga4 = generateElipticParabloid(-5, 7.6, 1, earColor[0], earColor[1], earColor[2], 1, .2, 1, 100, 1.3, 0, 2.35);
   
     // 
     // MATA
     // 
-    var mata1 = generateEllipsoid(-2.3 , 5, 3 , .5, .6, .2, eyeColor[0], eyeColor[1], eyeColor[2], 100);
-    var mata2 = generateEllipsoid(-2.3, 4.8, 3.2 , .2, .3, .2, eyeColor[3], eyeColor[4], eyeColor[5], 100);
-    var mata3 = generateEllipsoid(-.8 , 5, 3 , .5, .6, .2, eyeColor[0], eyeColor[1], eyeColor[2], 100);
-    var mata4 = generateEllipsoid(-.8, 4.8, 3.2 , .2, .3, .2, eyeColor[3], eyeColor[4], eyeColor[5], 100);
-    var mata5 = generateElipticParabloid(-1, 5.6, 3, bodyColor[0], bodyColor[1], bodyColor[2], .3, .2, .1, 100, 1.6, 0, -3.6);
-    var mata6 = generateElipticParabloid(-2.1, 5.6, 3, bodyColor[0], bodyColor[1], bodyColor[2], .3, .2, .1, 100, 1.6, 0, 3.6);
+    var mata1 = generateEllipsoid(-2.3 , 5, 3.6 , .5, .6, .2, eyeColor[0], eyeColor[1], eyeColor[2], 100);
+    var mata2 = generateEllipsoid(-2.3, 4.8, 3.8 , .2, .3, .2, eyeColor[3], eyeColor[4], eyeColor[5], 100);
+    var mata3 = generateEllipsoid(-.8 , 5, 3.6 , .5, .6, .2, eyeColor[0], eyeColor[1], eyeColor[2], 100);
+    var mata4 = generateEllipsoid(-.8, 4.8, 3.8 , .2, .3, .2, eyeColor[3], eyeColor[4], eyeColor[5], 100);
+   
+   
     // 
     // MULUT
     // 
   
-    var rahang = generateTorus(-1.55, 3.6, 2.66, bodyColor2[0], bodyColor2[1], bodyColor2[2], .5, .9, 100, 100, 1.55, 0, 0);
+    var rahang = generateTorus(-1.55, 3.6, 3.4, bodyColor2[0], bodyColor2[1], bodyColor2[2], .5, .9, 100, 100, 1.55, 0, 0);
   
     // 
     // HIDUNG 
     // 
-    var hidung = generateEllipsoid(-1.43, 4, 4, .2, .2, .2, eyeColor[3], eyeColor[4], eyeColor[5], 100);
+    var hidung = generateEllipsoid(-1.43, 4, 4.8, .2, .2, .2, eyeColor[3], eyeColor[4], eyeColor[5], 100);
   
   
     // 
@@ -305,20 +283,12 @@ function createVertexBuffer(GL, data){
     var LEHER1_COLORS = createColorBuffer(GL, leher1);
     var LEHER1_FACES = createFacesBuffer(GL, leher1);
   
-    var LEHER2_VERTEX = createVertexBuffer(GL, leher2);
-    var LEHER2_COLORS = createColorBuffer(GL, leher2);
-    var LEHER2_FACES = createFacesBuffer(GL, leher2);
-  
     // 
     // KEPALA
     // 
     var KEPALA1_VERTEX = createVertexBuffer(GL, kepala1);
     var KEPALA1_COLORS = createColorBuffer(GL, kepala1);
     var KEPALA1_FACES = createFacesBuffer(GL, kepala1);
-  
-    var KEPALA2_VERTEX = createVertexBuffer(GL, kepala2);
-    var KEPALA2_COLORS = createColorBuffer(GL, kepala2);
-    var KEPALA2_FACES = createFacesBuffer(GL, kepala2);
   
     // 
     // HIDUNG
@@ -347,14 +317,6 @@ function createVertexBuffer(GL, data){
     var MATA4_COLORS = createColorBuffer(GL, mata4);
     var MATA4_FACES = createFacesBuffer(GL, mata4);
   
-    var MATA5_VERTEX = createVertexBuffer(GL, mata5);
-    var MATA5_COLORS = createColorBuffer(GL, mata5);
-    var MATA5_FACES = createFacesBuffer(GL, mata5);
-  
-    var MATA6_VERTEX = createVertexBuffer(GL, mata6);
-    var MATA6_COLORS = createColorBuffer(GL, mata6);
-    var MATA6_FACES = createFacesBuffer(GL, mata6);
-  
     // 
     // TELINGA
     // 
@@ -365,6 +327,15 @@ function createVertexBuffer(GL, data){
     var TELINGA2_VERTEX = createVertexBuffer(GL, telinga2);
     var TELINGA2_COLORS = createColorBuffer(GL, telinga2);
     var TELINGA2_FACES = createFacesBuffer(GL, telinga2);
+  
+    var TELINGA3_VERTEX = createVertexBuffer(GL, telinga3);
+    var TELINGA3_COLORS = createColorBuffer(GL, telinga3);
+    var TELINGA3_FACES = createFacesBuffer(GL, telinga3);
+  
+    var TELINGA4_VERTEX = createVertexBuffer(GL, telinga4);
+    var TELINGA4_COLORS = createColorBuffer(GL, telinga4);
+    var TELINGA4_FACES = createFacesBuffer(GL, telinga4);
+  
   
     // 
     // MULUT
@@ -434,119 +405,90 @@ function createVertexBuffer(GL, data){
     //
     // TANGAN KIRI
     // 
-    var TANGANKIRI1_MATRIX = LIBS.get_I4();
-    var TANGANKIRI2_MATRIX = LIBS.get_I4();
-    var TANGANKIRI3_MATRIX = LIBS.get_I4();
-    var TANGANKIRI4_MATRIX = LIBS.get_I4();
-    var TANGANKIRI5_MATRIX = LIBS.get_I4();
-
+    var TANGAN_KIRI_ATAS_MATRIX = LIBS.get_I4();
+    var TANGAN_KIRI_BAWAH_MATRIX = LIBS.get_I4();
+  
     //
     // TANGAN KANAN
     // 
-    var TANGANKANAN1_MATRIX = LIBS.get_I4();
-    var TANGANKANAN2_MATRIX = LIBS.get_I4();
-    var TANGANKANAN3_MATRIX = LIBS.get_I4();
-    var TANGANKANAN4_MATRIX = LIBS.get_I4();
-    var TANGANKANAN5_MATRIX = LIBS.get_I4();
-
+    var TANGAN_KANAN_ATAS_MATRIX = LIBS.get_I4();
+    var TANGAN_KANAN_BAWAH_MATRIX = LIBS.get_I4();
+  
     //
     // KAKI KIRI
     // 
-    var KAKIKIRI1_MATRIX = LIBS.get_I4();
-    var KAKIKIRI2_MATRIX = LIBS.get_I4();
-    var KAKIKIRI3_MATRIX = LIBS.get_I4();
-    var KAKIKIRI4_MATRIX = LIBS.get_I4();
-    var KAKIKIRI5_MATRIX = LIBS.get_I4();
-
+    var KAKI_KIRI_ATAS_MATRIX = LIBS.get_I4();
+    var KAKI_KIRI_BAWAH_MATRIX = LIBS.get_I4();
+  
     //
     // KAKI KANAN
     // 
-    var KAKIKANAN1_MATRIX = LIBS.get_I4();
-    var KAKIKANAN2_MATRIX = LIBS.get_I4();
-    var KAKIKANAN3_MATRIX = LIBS.get_I4();
-    var KAKIKANAN4_MATRIX = LIBS.get_I4();
-    var KAKIKANAN5_MATRIX = LIBS.get_I4();
-
-    // 
-    // MULUT
-    // 
-    var RAHANG_MATRIX =  LIBS.get_I4();
-
-    // 
-    // TELINGA
-    //
-    var TELINGA1_MATRIX =  LIBS.get_I4();
-    var TELINGA2_MATRIX =  LIBS.get_I4();
-
+    var KAKI_KANAN_ATAS_MATRIX = LIBS.get_I4();
+    var KAKI_KANAN_BAWAH_MATRIX = LIBS.get_I4();
+  
+  
     // 
     // BADAN
     // 
-    var BADAN1_MATRIX =  LIBS.get_I4();
-    var BADAN2_MATRIX =  LIBS.get_I4();
-
-    // 
-    // BADAN BAWAH
-    // 
-    var BADAN_BAWAH_MATRIX =  LIBS.get_I4();
-
-    // 
-    // HIDUNG
-    // 
-    var HIDUNG_MATRIX =  LIBS.get_I4();
-
+    var BADAN_MATRIX =  LIBS.get_I4();
+  
     // 
     // KEPALA
     // 
-    var KEPALA1_MATRIX =  LIBS.get_I4();
-    var KEPALA2_MATRIX =  LIBS.get_I4();
-
-
-    // 
-    // MATA
-    // 
-    var MATA1_MATRIX =  LIBS.get_I4();
-    var MATA2_MATRIX =  LIBS.get_I4();
-    var MATA3_MATRIX =  LIBS.get_I4();
-    var MATA4_MATRIX =  LIBS.get_I4();
-    var MATA5_MATRIX =  LIBS.get_I4();
-    var MATA6_MATRIX =  LIBS.get_I4();
-
-    // 
-    // LEHER
-    // 
-    var LEHER1_MATRIX =  LIBS.get_I4();
-    var LEHER2_MATRIX =  LIBS.get_I4();
-
-
-
-    LIBS.translateZ(VIEW_MATRIX, -25);
-
+    var KEPALA_MATRIX =  LIBS.get_I4();
+  
+  
+  
+    LIBS.translateZ(VIEW_MATRIX, -10);
+  
     /*=========================================================== */
     /*========================= DRAWING ========================= */
     /*=========================================================== */
-
-
+  
+  
     GL.clearColor(0.0, 0.0, 0.0, 0.0);
   
     GL.enable(GL.DEPTH_TEST);
     GL.depthFunc(GL.LEQUAL);
   
-    var time_prev = 0;
-    var animationSpeed = 0.0000001; // Adjust as needed
-    var legAngle = 0; // Initial angle for leg movement
-
-    var animate = function (time) {
+  
+    var then = 0;
+  
+    // 
+    // Variable Time 
+    // 
+  
+    // 
+    // KAKI KIRI 
+    // 
+    var KakiKiriTime = 0;
+    var KakiKiriReverse = false;
+  
+    //
+    // KAKI KANAN
+    // 
+    var KakiKananTime = 0;
+    var KakiKananReverse = false;
+  
+  
+  
+  
+  
+    // 
+    // DRAW
+    // 
+    var animateSpike = function (time) {
       GL.viewport(0, 0, CANVAS.width, CANVAS.height);
       GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
     
-      var dt = time - time_prev;
-      time_prev = time;
-        
-      // Update leg movement
-      legAngle += animationSpeed * dt; // Adjust speed
-    
-      // Calculate leg movement
-      var legMovement = Math.sin(legAngle) * 45; // Adjust amplitude
+      // Ubah jadi 1 detik
+      time *= 0.001
+    //   console.log(time)
+  
+      var deltaTime = (time - then)*100;
+      then = time;
+  
+  
       if (!drag) {
         dx *= friction;
         dy *= friction;
@@ -554,27 +496,155 @@ function createVertexBuffer(GL, data){
         theta += (dx * 2 * Math.PI) / CANVAS.width;
         alpha += (dy * 2 * Math.PI) / CANVAS.height;
       }
-      // 
-      // TIME CONTROL
-      // 
-
-      KEPALA1_MATRIX = LIBS.get_I4();
-      LIBS.rotateY(KEPALA1_MATRIX, theta);
-      LIBS.rotateX(KEPALA1_MATRIX, alpha);
-    //   LIBS.rotateX(KEPALA1_MATRIX, legMovement); // Apply leg movement
   
+  
+    /*=========================================================== */
+    /*======================= TIME CONTROL ====================== */
+    /*=========================================================== */
+    
+    //   
+    // BADAN
+    // 
+      BADAN_MATRIX = LIBS.get_I4();
+  
+  
+    //   
+    // KEPALA
+    // 
+      KEPALA_MATRIX =  LIBS.get_I4();
+  
+    // 
+    // TANGAN KIRI
+    // 
+      TANGAN_KIRI_ATAS_MATRIX = LIBS.get_I4();
+      TANGAN_KIRI_BAWAH_MATRIX = LIBS.get_I4();
+  
+    // 
+    // TANGAN KANAN
+    // 
+      TANGAN_KANAN_ATAS_MATRIX = LIBS.get_I4();
+      TANGAN_KANAN_BAWAH_MATRIX = LIBS.get_I4();
+  
+  
+    //   
+    // KAKI KIRI
+    // 
+    
+    KAKI_KIRI_ATAS_MATRIX = LIBS.get_I4();
+    KAKI_KIRI_BAWAH_MATRIX = LIBS.get_I4();
+    var KF_KakiKiriAtas = 0;
+    var KF_KakiKiriBawah = 0;
+  
+    if(time < 10){
+      if(KakiKiriTime <= -10){
+        KakiKiriReverse = false;
+      }else if(KakiKiriTime >= 10){
+        KakiKiriReverse = true;
+      }
+  
+      if(KakiKiriReverse){
+        KakiKiriTime -= deltaTime;
+      }else{
+        KakiKiriTime += deltaTime;
+      }
+      console.log(KakiKiriTime)
+      KF_KakiKiriAtas = LIBS.degToRad(KakiKiriTime);
+      KF_KakiKiriBawah = LIBS.degToRad(KakiKiriTime);
+    }
+    // 
+    // KAKI KANAN
+    // 
+    KAKI_KANAN_ATAS_MATRIX = LIBS.get_I4();
+    KAKI_KANAN_BAWAH_MATRIX = LIBS.get_I4();
+    var KF_KakiKananAtas = 0;
+    var KF_KakiKananBawah = 0;
+  
+    if(time < 10){
+    if(KakiKananTime <= -10){
+      KakiKananReverse = true;
+    }else if(KakiKananTime >= 10){
+      KakiKananReverse = false;
+    }
+    
+    if(KakiKananReverse){
+      KakiKananTime += deltaTime;
+    }else{
+      KakiKananTime -= deltaTime;
+    }
+       KF_KakiKananAtas = LIBS.degToRad(KakiKananTime);
+       KF_KakiKananBawah = LIBS.degToRad(KakiKananTime);
+    }
+  
+      
     /*=========================================================== */
     /*========================= ANIMASI ========================= */
     /*=========================================================== */
-
+  
       //
+      // BADAN
       //
+  
+      LIBS.rotateY(BADAN_MATRIX, theta);
+      LIBS.rotateX(BADAN_MATRIX, alpha);
+    //   LIBS.rotateX(BADAN_MATRIX, rotation[0]);
+    //   LIBS.rotateY(BADAN_MATRIX, rotation[1]);
+    //   LIBS.rotateZ(BADAN_MATRIX, rotation[2]);
+  
       //
-
-
-
-
-
+      // BADAN
+      //
+      LIBS.rotateY(KEPALA_MATRIX, theta);
+      LIBS.rotateX(KEPALA_MATRIX, alpha);
+  
+      //
+      // TANGAN KIRI
+      //
+      LIBS.rotateY(TANGAN_KIRI_ATAS_MATRIX, theta);
+      LIBS.rotateX(TANGAN_KIRI_ATAS_MATRIX, alpha);
+  
+      LIBS.rotateY(TANGAN_KIRI_BAWAH_MATRIX, theta);
+      LIBS.rotateX(TANGAN_KIRI_BAWAH_MATRIX, alpha);
+  
+  
+      //
+      // TANGAN KANAN
+      //
+      LIBS.rotateY(TANGAN_KANAN_ATAS_MATRIX, theta);
+      LIBS.rotateX(TANGAN_KANAN_ATAS_MATRIX, alpha);
+  
+      LIBS.rotateY(TANGAN_KANAN_BAWAH_MATRIX, theta);
+      LIBS.rotateX(TANGAN_KANAN_BAWAH_MATRIX, alpha);
+  
+  
+      //
+      // KAKI KIRI
+      //
+  
+      LIBS.rotateX(KAKI_KIRI_ATAS_MATRIX, KF_KakiKiriAtas);
+      LIBS.rotateX(KAKI_KIRI_BAWAH_MATRIX, KF_KakiKiriBawah);
+  
+      LIBS.rotateY(KAKI_KIRI_ATAS_MATRIX, theta);
+      LIBS.rotateX(KAKI_KIRI_ATAS_MATRIX, alpha);
+  
+      LIBS.rotateY(KAKI_KIRI_BAWAH_MATRIX, theta);
+      LIBS.rotateX(KAKI_KIRI_BAWAH_MATRIX, alpha);
+  
+  
+      //
+      // KAKI KANAN
+      //
+  
+      LIBS.rotateX(KAKI_KANAN_ATAS_MATRIX, KF_KakiKananAtas);
+      LIBS.rotateX(KAKI_KANAN_BAWAH_MATRIX, KF_KakiKananBawah);
+  
+      LIBS.rotateY(KAKI_KANAN_ATAS_MATRIX, theta);
+      LIBS.rotateX(KAKI_KANAN_ATAS_MATRIX, alpha);
+  
+      LIBS.rotateY(KAKI_KANAN_BAWAH_MATRIX, theta);
+      LIBS.rotateX(KAKI_KANAN_BAWAH_MATRIX, alpha);
+  
+  
+  
     /*=========================================================== */
     /*======================= GAMBAR MODEL ====================== */
     /*=========================================================== */
@@ -594,7 +664,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, TANGANKIRI1_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KIRI_ATAS_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, tanganKiri1.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -610,7 +680,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, TANGANKIRI2_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KIRI_ATAS_MATRIX);
   
   
       GL.drawElements(GL.TRIANGLES, tanganKiri2.faces.length, GL.UNSIGNED_SHORT, 0);
@@ -628,7 +698,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, TANGANKIRI3_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KIRI_BAWAH_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, tanganKiri3.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -644,7 +714,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, TANGANKIRI4_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KIRI_BAWAH_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, tanganKiri4.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -659,7 +729,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, TANGANKIRI5_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KIRI_BAWAH_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, tanganKiri5.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -678,7 +748,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, TANGANKANAN1_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KANAN_ATAS_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, tanganKanan1.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -694,7 +764,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, TANGANKANAN2_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KANAN_ATAS_MATRIX);
   
   
       GL.drawElements(GL.TRIANGLES, tanganKanan2.faces.length, GL.UNSIGNED_SHORT, 0);
@@ -712,7 +782,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, TANGANKANAN3_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KANAN_BAWAH_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, tanganKanan3.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -728,7 +798,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, TANGANKANAN4_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KANAN_BAWAH_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, tanganKanan4.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -743,7 +813,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, TANGANKANAN5_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KANAN_BAWAH_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, tanganKanan5.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -762,7 +832,7 @@ function createVertexBuffer(GL, data){
       
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, BADAN1_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, BADAN_MATRIX);
       
       GL.drawElements(GL.TRIANGLES, badan1.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -777,7 +847,7 @@ function createVertexBuffer(GL, data){
       
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, BADAN2_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, BADAN_MATRIX);
       
       GL.drawElements(GL.TRIANGLES, badan2.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -796,7 +866,7 @@ function createVertexBuffer(GL, data){
       
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, BADAN_BAWAH_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, BADAN_MATRIX);
       
       GL.drawElements(GL.TRIANGLES, badanBawah.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -814,25 +884,9 @@ function createVertexBuffer(GL, data){
       
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, LEHER1_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, BADAN_MATRIX);
       
       GL.drawElements(GL.TRIANGLES, leher1.faces.length, GL.UNSIGNED_SHORT, 0);
-  
-      // Collar
-      GL.bindBuffer(GL.ARRAY_BUFFER, LEHER2_VERTEX);
-      GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
-      
-      GL.bindBuffer(GL.ARRAY_BUFFER, LEHER2_COLORS);
-      GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
-      
-      GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, LEHER2_FACES);
-      
-      GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
-      GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, LEHER2_MATRIX);
-      
-      GL.drawElements(GL.TRIANGLES, leher2.faces.length, GL.UNSIGNED_SHORT, 0);
-  
   
       // 
       // KEPALA
@@ -848,23 +902,9 @@ function createVertexBuffer(GL, data){
       
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, KEPALA1_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
       
       GL.drawElements(GL.TRIANGLES, kepala1.faces.length, GL.UNSIGNED_SHORT, 0);
-  
-      GL.bindBuffer(GL.ARRAY_BUFFER, KEPALA2_VERTEX);
-      GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
-      
-      GL.bindBuffer(GL.ARRAY_BUFFER, KEPALA2_COLORS);
-      GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
-      
-      GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, KEPALA2_FACES);
-      
-      GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
-      GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, KEPALA2_MATRIX);
-      
-      GL.drawElements(GL.TRIANGLES, kepala2.faces.length, GL.UNSIGNED_SHORT, 0);
   
       // 
       // TELINGA
@@ -882,7 +922,7 @@ function createVertexBuffer(GL, data){
       
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, TELINGA1_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
       
       GL.drawElements(GL.TRIANGLES, telinga1.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -898,10 +938,42 @@ function createVertexBuffer(GL, data){
       
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, TELINGA2_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
       
       GL.drawElements(GL.TRIANGLES, telinga2.faces.length, GL.UNSIGNED_SHORT, 0);
   
+       // Kanan
+  
+       GL.bindBuffer(GL.ARRAY_BUFFER, TELINGA3_VERTEX);
+       GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+       
+       GL.bindBuffer(GL.ARRAY_BUFFER, TELINGA3_COLORS);
+       GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+       
+       GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TELINGA3_FACES);
+       
+       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+       GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
+       
+       GL.drawElements(GL.TRIANGLES, telinga3.faces.length, GL.UNSIGNED_SHORT, 0);
+   
+       // Kiri
+   
+       GL.bindBuffer(GL.ARRAY_BUFFER, TELINGA4_VERTEX);
+       GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+       
+       GL.bindBuffer(GL.ARRAY_BUFFER, TELINGA4_COLORS);
+       GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+       
+       GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TELINGA4_FACES);
+       
+       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+       GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
+       
+       GL.drawElements(GL.TRIANGLES, telinga4.faces.length, GL.UNSIGNED_SHORT, 0);
+   
       // 
       // MULUT 
       // 
@@ -917,7 +989,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, RAHANG_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, rahang.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -936,7 +1008,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, KAKIKIRI1_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, KAKI_KIRI_ATAS_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, kakiKiri1.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -952,7 +1024,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, KAKIKIRI2_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, KAKI_KIRI_ATAS_MATRIX);
   
   
       GL.drawElements(GL.TRIANGLES, kakiKiri2.faces.length, GL.UNSIGNED_SHORT, 0);
@@ -970,7 +1042,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, KAKIKIRI3_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, KAKI_KIRI_BAWAH_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, kakiKiri3.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -986,7 +1058,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, KAKIKIRI4_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, KAKI_KIRI_BAWAH_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, kakiKiri4.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -1001,7 +1073,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, KAKIKIRI5_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, KAKI_KIRI_BAWAH_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, kakiKiri5.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -1020,7 +1092,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, MATA1_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, mata1.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -1036,7 +1108,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, MATA2_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
   
   
       GL.drawElements(GL.TRIANGLES, mata2.faces.length, GL.UNSIGNED_SHORT, 0);
@@ -1053,7 +1125,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, MATA3_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, mata3.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -1069,41 +1141,9 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, MATA4_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, mata4.faces.length, GL.UNSIGNED_SHORT, 0);
-  
-      // KELOPAK
-      GL.bindBuffer(GL.ARRAY_BUFFER, MATA5_VERTEX);
-      GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
-  
-      GL.bindBuffer(GL.ARRAY_BUFFER, MATA5_COLORS);
-      GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
-  
-      GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, MATA5_FACES);
-  
-      GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
-      GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, MATA5_MATRIX);
-  
-      GL.drawElements(GL.TRIANGLES, mata5.faces.length, GL.UNSIGNED_SHORT, 0);
-  
-      
-      // KELOPAK
-      GL.bindBuffer(GL.ARRAY_BUFFER, MATA6_VERTEX);
-      GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
-  
-      GL.bindBuffer(GL.ARRAY_BUFFER, MATA6_COLORS);
-      GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
-  
-      GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, MATA6_FACES);
-  
-      GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
-      GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, MATA6_MATRIX);
-  
-      GL.drawElements(GL.TRIANGLES, mata6.faces.length, GL.UNSIGNED_SHORT, 0);
-      
   
       // HIDUNG
       GL.bindBuffer(GL.ARRAY_BUFFER, HIDUNG_VERTEX);
@@ -1116,7 +1156,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, HIDUNG_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, hidung.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -1136,7 +1176,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, KAKIKANAN1_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, KAKI_KANAN_ATAS_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, kakiKanan1.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -1152,7 +1192,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, KAKIKANAN2_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, KAKI_KANAN_ATAS_MATRIX);
   
   
       GL.drawElements(GL.TRIANGLES, kakiKanan2.faces.length, GL.UNSIGNED_SHORT, 0);
@@ -1170,7 +1210,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, KAKIKANAN3_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, KAKI_KANAN_BAWAH_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, kakiKanan3.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -1186,7 +1226,7 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, KAKIKANAN4_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, KAKI_KANAN_BAWAH_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, kakiKanan4.faces.length, GL.UNSIGNED_SHORT, 0);
   
@@ -1201,15 +1241,16 @@ function createVertexBuffer(GL, data){
   
       GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
       GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-      GL.uniformMatrix4fv(_MMatrix, false, KAKIKANAN5_MATRIX);
+      GL.uniformMatrix4fv(_MMatrix, false, KAKI_KANAN_BAWAH_MATRIX);
   
       GL.drawElements(GL.TRIANGLES, kakiKanan5.faces.length, GL.UNSIGNED_SHORT, 0);
       GL.flush();
   
-      window.requestAnimationFrame(animate);
+      window.requestAnimationFrame(animateSpike);
+  
     };
   
-    animate(0);
+    animateSpike(0);
   }
   
   window.addEventListener("load", main);

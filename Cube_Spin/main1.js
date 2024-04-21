@@ -362,21 +362,11 @@ function main() {
     LIBS.rotateY(MODEL_MATRIX, THETA);
     LIBS.translateX(MODEL_MATRIX, -4);
 
-    // LIBS.translateY(MODEL_MATRIX, 2);
-    // LIBS.translateZ(MODEL_MATRIX, -20);
-
-    //LIBS.setPosition(MODEL_MATRIX, pos_x, pos_y, pos_z);
-
     //MATRIX 2
     MODEL_MATRIX2 = LIBS.get_I4();
     LIBS.rotateX(MODEL_MATRIX2, -ALPHA);
     LIBS.rotateY(MODEL_MATRIX2, -THETA);
     LIBS.translateX(MODEL_MATRIX2, 4);
-
-    // LIBS.translateY(MODEL_MATRIX2, 2);
-    // LIBS.translateZ(MODEL_MATRIX2, -20);
-
-    //LIBS.setPosition(MODEL_MATRIX2, -pos_x, -pos_y, -pos_z);
 
     var temp = LIBS.get_I4();
     LIBS.translateX(temp, -6);
