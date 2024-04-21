@@ -41,14 +41,14 @@ function main() {
     drag = true;
     x_prev = e.pageX;
     y_prev = e.pageY;
-    console.log("DOWN");
+    
   };
   var mouseUP = function (e) {
     drag = false;
-    console.log("UP");
+
   };
   var mouseOut = function (e) {
-    console.log("OUTTT");
+
   };
   var mouseMove = function (e) {
     if (!drag) {
@@ -58,7 +58,6 @@ function main() {
     dx = e.pageX - x_prev;
     dy = e.pageY - y_prev;
 
-    console.log(dx + " " + dy);
     x_prev = e.pageX;
     y_prev = e.pageY;
 
@@ -202,7 +201,7 @@ function main() {
   // MULUT
   // 
 
-  var rahang = generateTorus(-1.65, 3.6, 2.66, bodyColor2[0], bodyColor2[1], bodyColor2[2], .5, .9, 100, 100, 1.55, 0, 0);
+  var rahang = generateTorus(-1.55, 3.6, 2.66, bodyColor2[0], bodyColor2[1], bodyColor2[2], .5, .9, 100, 100, 1.55, 0, 0);
 
   // 
   // HIDUNG 
@@ -424,31 +423,104 @@ function main() {
   var KAKI_KANAN5_FACES = createFacesBuffer(GL, kakiKanan5);
 
 
-
-
-  //matrix
+  /*=========================================================== */
+  /*========================= MATRIX ========================= */
+  /*=========================================================== */
   var PROJECTION_MATRIX = LIBS.get_projection(40, CANVAS.width / CANVAS.height, 1, 100);
   var VIEW_MATRIX = LIBS.get_I4();
   var MODEL_MATRIX = LIBS.get_I4();
 
+  //
+  // TANGAN KIRI
+  // 
+  var TANGAN_KIRI_ATAS_MATRIX = LIBS.get_I4();
+  var TANGAN_KIRI_BAWAH_MATRIX = LIBS.get_I4();
+
+  //
+  // TANGAN KANAN
+  // 
+  var TANGAN_KANAN_ATAS_MATRIX = LIBS.get_I4();
+  var TANGAN_KANAN_BAWAH_MATRIX = LIBS.get_I4();
+
+  //
+  // KAKI KIRI
+  // 
+  var KAKI_KIRI_ATAS_MATRIX = LIBS.get_I4();
+  var KAKI_KIRI_BAWAH_MATRIX = LIBS.get_I4();
+
+  //
+  // KAKI KANAN
+  // 
+  var KAKI_KANAN_ATAS_MATRIX = LIBS.get_I4();
+  var KAKI_KANAN_BAWAH_MATRIX = LIBS.get_I4();
+
+
+  // 
+  // BADAN
+  // 
+  var BADAN_MATRIX =  LIBS.get_I4();
+
+  // 
+  // KEPALA
+  // 
+  var KEPALA_MATRIX =  LIBS.get_I4();
+
+
+
   LIBS.translateZ(VIEW_MATRIX, -25);
 
+  /*=========================================================== */
   /*========================= DRAWING ========================= */
+  /*=========================================================== */
+
+
   GL.clearColor(0.0, 0.0, 0.0, 0.0);
 
   GL.enable(GL.DEPTH_TEST);
   GL.depthFunc(GL.LEQUAL);
 
-  var time_prev = 0;
+  var translation = [0, 0, -360];
+  var rotation = [LIBS.degToRad(190), LIBS.degToRad(40), LIBS.degToRad(320)];
+  var scale = [1, 1, 1];
+  var fieldOfViewRadians = LIBS.degToRad(60);
+  var rotationSpeed = 1.2;
+
+  var then = 0;
+
+  // 
+  // Variable Time 
+  // 
+
+  // 
+  // KAKI KIRI 
+  // 
+  var KakiKiriTime = 0;
+  var KakiKiriReverse = false;
+
+  //
+  // KAKI KANAN
+  // 
+  var KakiKananTime = 0;
+  var KakiKananReverse = false;
+
+
+
+
+
+  // 
+  // DRAW
+  // 
   var animate = function (time) {
     GL.viewport(0, 0, CANVAS.width, CANVAS.height);
     GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
+  
+    // Ubah jadi 1 detik
+    time *= 0.001
+  //   console.log(time)
 
-    // 
-    // TIME CONTROL
-    // 
-    var dt = time - time_prev;
-    time_prev = time;
+    var deltaTime = (time - then)*100;
+    then = time;
+
 
     if (!drag) {
       dx *= friction;
@@ -458,10 +530,158 @@ function main() {
       alpha += (dy * 2 * Math.PI) / CANVAS.height;
     }
 
-    MODEL_MATRIX = LIBS.get_I4();
-    LIBS.rotateY(MODEL_MATRIX, theta);
-    LIBS.rotateX(MODEL_MATRIX, alpha);
 
+  /*=========================================================== */
+  /*======================= TIME CONTROL ====================== */
+  /*=========================================================== */
+  
+  //   
+  // BADAN
+  // 
+    BADAN_MATRIX = LIBS.get_I4();
+
+
+  //   
+  // KEPALA
+  // 
+    KEPALA_MATRIX =  LIBS.get_I4();
+
+  // 
+  // TANGAN KIRI
+  // 
+    TANGAN_KIRI_ATAS_MATRIX = LIBS.get_I4();
+    TANGAN_KIRI_BAWAH_MATRIX = LIBS.get_I4();
+
+  // 
+  // TANGAN KANAN
+  // 
+    TANGAN_KANAN_ATAS_MATRIX = LIBS.get_I4();
+    TANGAN_KANAN_BAWAH_MATRIX = LIBS.get_I4();
+
+
+  //   
+  // KAKI KIRI
+  // 
+  
+  KAKI_KIRI_ATAS_MATRIX = LIBS.get_I4();
+  KAKI_KIRI_BAWAH_MATRIX = LIBS.get_I4();
+  var KF_KakiKiriAtas = 0;
+  var KF_KakiKiriBawah = 0;
+
+  if(time < 10){
+    if(KakiKiriTime <= -30){
+      KakiKiriReverse = false;
+    }else if(KakiKiriTime >= 30){
+      KakiKiriReverse = true;
+    }
+
+    if(KakiKiriReverse){
+      KakiKiriTime -= deltaTime;
+    }else{
+      KakiKiriTime += deltaTime;
+    }
+
+    KF_KakiKiriAtas = LIBS.degToRad(KakiKiriTime);
+    KF_KakiKiriBawah = LIBS.degToRad(KakiKiriTime);
+  }
+  // 
+  // KAKI KANAN
+  // 
+  KAKI_KANAN_ATAS_MATRIX = LIBS.get_I4();
+  KAKI_KANAN_BAWAH_MATRIX = LIBS.get_I4();
+  var KF_KakiKananAtas = 0;
+  var KF_KakiKananBawah = 0;
+
+  if(time < 10){
+  if(KakiKananTime <= -30){
+    KakiKananReverse = true;
+  }else if(KakiKananTime >= 30){
+    KakiKananReverse = false;
+  }
+  
+  if(KakiKananReverse){
+    KakiKananTime += deltaTime;
+  }else{
+    KakiKananTime -= deltaTime;
+  }
+     KF_KakiKananAtas = LIBS.degToRad(KakiKananTime);
+     KF_KakiKananBawah = LIBS.degToRad(KakiKananTime);
+  }
+
+    
+  /*=========================================================== */
+  /*========================= ANIMASI ========================= */
+  /*=========================================================== */
+
+    //
+    // BADAN
+    //
+
+    LIBS.rotateY(BADAN_MATRIX, theta);
+    LIBS.rotateX(BADAN_MATRIX, alpha);
+  //   LIBS.rotateX(BADAN_MATRIX, rotation[0]);
+  //   LIBS.rotateY(BADAN_MATRIX, rotation[1]);
+  //   LIBS.rotateZ(BADAN_MATRIX, rotation[2]);
+
+    //
+    // BADAN
+    //
+    LIBS.rotateY(KEPALA_MATRIX, theta);
+    LIBS.rotateX(KEPALA_MATRIX, alpha);
+
+    //
+    // TANGAN KIRI
+    //
+    LIBS.rotateY(TANGAN_KIRI_ATAS_MATRIX, theta);
+    LIBS.rotateX(TANGAN_KIRI_ATAS_MATRIX, alpha);
+
+    LIBS.rotateY(TANGAN_KIRI_BAWAH_MATRIX, theta);
+    LIBS.rotateX(TANGAN_KIRI_BAWAH_MATRIX, alpha);
+
+
+    //
+    // TANGAN KANAN
+    //
+    LIBS.rotateY(TANGAN_KANAN_ATAS_MATRIX, theta);
+    LIBS.rotateX(TANGAN_KANAN_ATAS_MATRIX, alpha);
+
+    LIBS.rotateY(TANGAN_KANAN_BAWAH_MATRIX, theta);
+    LIBS.rotateX(TANGAN_KANAN_BAWAH_MATRIX, alpha);
+
+
+    //
+    // KAKI KIRI
+    //
+
+    LIBS.rotateX(KAKI_KIRI_ATAS_MATRIX, KF_KakiKiriAtas);
+    LIBS.rotateX(KAKI_KIRI_BAWAH_MATRIX, KF_KakiKiriBawah);
+
+    LIBS.rotateY(KAKI_KIRI_ATAS_MATRIX, theta);
+    LIBS.rotateX(KAKI_KIRI_ATAS_MATRIX, alpha);
+
+    LIBS.rotateY(KAKI_KIRI_BAWAH_MATRIX, theta);
+    LIBS.rotateX(KAKI_KIRI_BAWAH_MATRIX, alpha);
+
+
+    //
+    // KAKI KANAN
+    //
+
+    LIBS.rotateX(KAKI_KANAN_ATAS_MATRIX, KF_KakiKananAtas);
+    LIBS.rotateX(KAKI_KANAN_BAWAH_MATRIX, KF_KakiKananBawah);
+
+    LIBS.rotateY(KAKI_KANAN_ATAS_MATRIX, theta);
+    LIBS.rotateX(KAKI_KANAN_ATAS_MATRIX, alpha);
+
+    LIBS.rotateY(KAKI_KANAN_BAWAH_MATRIX, theta);
+    LIBS.rotateX(KAKI_KANAN_BAWAH_MATRIX, alpha);
+
+
+
+  /*=========================================================== */
+  /*======================= GAMBAR MODEL ====================== */
+  /*=========================================================== */
+      
     // 
     // TANGAN KIRI
     //
@@ -477,7 +697,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KIRI_ATAS_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, tanganKiri1.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -493,7 +713,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KIRI_ATAS_MATRIX);
 
 
     GL.drawElements(GL.TRIANGLES, tanganKiri2.faces.length, GL.UNSIGNED_SHORT, 0);
@@ -511,7 +731,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KIRI_BAWAH_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, tanganKiri3.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -527,7 +747,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KIRI_BAWAH_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, tanganKiri4.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -542,7 +762,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KIRI_BAWAH_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, tanganKiri5.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -561,7 +781,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KANAN_ATAS_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, tanganKanan1.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -577,7 +797,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KANAN_ATAS_MATRIX);
 
 
     GL.drawElements(GL.TRIANGLES, tanganKanan2.faces.length, GL.UNSIGNED_SHORT, 0);
@@ -595,7 +815,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KANAN_BAWAH_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, tanganKanan3.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -611,7 +831,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KANAN_BAWAH_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, tanganKanan4.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -626,7 +846,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KANAN_BAWAH_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, tanganKanan5.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -645,7 +865,7 @@ function main() {
     
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, BADAN_MATRIX);
     
     GL.drawElements(GL.TRIANGLES, badan1.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -660,7 +880,7 @@ function main() {
     
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, BADAN_MATRIX);
     
     GL.drawElements(GL.TRIANGLES, badan2.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -679,7 +899,7 @@ function main() {
     
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, BADAN_MATRIX);
     
     GL.drawElements(GL.TRIANGLES, badanBawah.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -697,7 +917,7 @@ function main() {
     
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, BADAN_MATRIX);
     
     GL.drawElements(GL.TRIANGLES, leher1.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -712,7 +932,7 @@ function main() {
     
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, BADAN_MATRIX);
     
     GL.drawElements(GL.TRIANGLES, leher2.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -731,7 +951,7 @@ function main() {
     
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
     
     GL.drawElements(GL.TRIANGLES, kepala1.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -745,7 +965,7 @@ function main() {
     
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
     
     GL.drawElements(GL.TRIANGLES, kepala2.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -765,7 +985,7 @@ function main() {
     
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
     
     GL.drawElements(GL.TRIANGLES, telinga1.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -781,7 +1001,7 @@ function main() {
     
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
     
     GL.drawElements(GL.TRIANGLES, telinga2.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -800,7 +1020,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, rahang.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -819,7 +1039,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KAKI_KIRI_ATAS_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, kakiKiri1.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -835,7 +1055,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KAKI_KIRI_ATAS_MATRIX);
 
 
     GL.drawElements(GL.TRIANGLES, kakiKiri2.faces.length, GL.UNSIGNED_SHORT, 0);
@@ -853,7 +1073,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KAKI_KIRI_BAWAH_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, kakiKiri3.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -869,7 +1089,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KAKI_KIRI_BAWAH_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, kakiKiri4.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -884,7 +1104,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KAKI_KIRI_BAWAH_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, kakiKiri5.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -903,7 +1123,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, mata1.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -919,7 +1139,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
 
 
     GL.drawElements(GL.TRIANGLES, mata2.faces.length, GL.UNSIGNED_SHORT, 0);
@@ -936,7 +1156,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, mata3.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -952,7 +1172,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, mata4.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -967,7 +1187,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, mata5.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -983,7 +1203,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, mata6.faces.length, GL.UNSIGNED_SHORT, 0);
     
@@ -999,7 +1219,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, hidung.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -1019,7 +1239,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KAKI_KANAN_ATAS_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, kakiKanan1.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -1035,7 +1255,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KAKI_KANAN_ATAS_MATRIX);
 
 
     GL.drawElements(GL.TRIANGLES, kakiKanan2.faces.length, GL.UNSIGNED_SHORT, 0);
@@ -1053,7 +1273,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KAKI_KANAN_BAWAH_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, kakiKanan3.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -1069,7 +1289,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KAKI_KANAN_BAWAH_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, kakiKanan4.faces.length, GL.UNSIGNED_SHORT, 0);
 
@@ -1084,7 +1304,7 @@ function main() {
 
     GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
     GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
-    GL.uniformMatrix4fv(_MMatrix, false, MODEL_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, KAKI_KANAN_BAWAH_MATRIX);
 
     GL.drawElements(GL.TRIANGLES, kakiKanan5.faces.length, GL.UNSIGNED_SHORT, 0);
     GL.flush();

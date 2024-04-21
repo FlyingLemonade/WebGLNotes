@@ -108,5 +108,9 @@ var LIBS = {
 
   translateY: function(m, t){
     m[13]+=t;
+  },
+
+  radToDeg(r) {
+    return r * 180 / Math.PI;
   }
 };
