@@ -130,23 +130,24 @@ function main() {
   var earColor = [255/255, 206/255, 199/255]
   var eyeColor = [235/255, 236/255, 240/255, 42/255, 42/255, 39/255]
 
+
   // 
   //  TANGAN KIRI
   // 
-  var tanganKiri1 = generateSphere(-4.7, 2, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
-  var tanganKiri2 = generateTube(-4.7, -1.4, .05, bodyColor[0], bodyColor[1], bodyColor[2], 3, .8, .8, 100);
-  var tanganKiri3 = generateSphere(-4.7, -1.5, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
-  var tanganKiri4 = generateTube(-4.7, -3.6, .05, bodyColor[0], bodyColor[1], bodyColor[2], 1.6, .6, .6, 100);
-  var tanganKiri5 = generateSphere(-4.7, -3.9, .55, bodyColor[0], bodyColor[1], bodyColor[2], .6, 50);
+  var tanganKiri1 = generateSphere(-4.9, 2, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
+  var tanganKiri2 = generateTube(-4.9, 3.4, .05, bodyColor[0], bodyColor[1], bodyColor[2], 3, .8, .8, 100);
+  var tanganKiri3 = generateSphere(-4.9, 3.5, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
+  var tanganKiri4 = generateTube(-4.9, 5.6, .05, bodyColor[0], bodyColor[1], bodyColor[2], 1.6, .6, .6, 100);
+  var tanganKiri5 = generateSphere(-4.9, 5.9, .55, bodyColor[0], bodyColor[1], bodyColor[2], .6, 50);
 
   // 
   // TANGAN KANAN
   // 
-  var tanganKanan1 = generateSphere(1.4, 2, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
-  var tanganKanan2 = generateTube(1.4, -1.4, .05, bodyColor[0], bodyColor[1], bodyColor[2], 3, .8, .8, 100);
-  var tanganKanan3 = generateSphere(1.4, -1.5, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
-  var tanganKanan4 = generateTube(1.4, -3.6, .05, bodyColor[0], bodyColor[1], bodyColor[2], 1.6, .6, .6, 100);
-  var tanganKanan5 = generateSphere(1.4, -3.9, .55, bodyColor[0], bodyColor[1], bodyColor[2], .6, 50);
+  var tanganKanan1 = generateSphere(1.6, 2, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
+  var tanganKanan2 = generateTube(1.6, 3.4, .05, bodyColor[0], bodyColor[1], bodyColor[2], 3, .8, .8, 100);
+  var tanganKanan3 = generateSphere(1.6, 3.5, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
+  var tanganKanan4 = generateTube(1.6, 5.6, .05, bodyColor[0], bodyColor[1], bodyColor[2], 1.6, .6, .6, 100);
+  var tanganKanan5 = generateSphere(1.6, 5.9, .55, bodyColor[0], bodyColor[1], bodyColor[2], .6, 50);
 
   // 
   // BADAN
@@ -223,7 +224,7 @@ function main() {
   // 
   // KECILIN JERRY
   // 
-  var scaleFactor = 0.02; 
+  var scaleFactor = 0.04; 
   var childJerry = [
     tanganKiri1, tanganKiri2, tanganKiri3, tanganKiri4, tanganKiri5,
     tanganKanan1, tanganKanan2, tanganKanan3, tanganKanan4, tanganKanan5,
@@ -248,7 +249,7 @@ function main() {
 // 
 var geserX = 0;
 var geserY = .5;
-var geserZ = 5;
+var geserZ = 4;
 
 for (var i = 0; i < childJerry.length; i++) {
     for (var j = 0; j < childJerry[i].vertices.length; j += 3) {
@@ -281,6 +282,7 @@ for (var i = 0; i < childJerry.length; i++) {
 
 var houseColor = [220/255, 211/255, 195/255];
 var roofColor = [165/255, 72/255, 66/255];
+var beefColor = [156/255, 0/255, 1/255];
 
 var world = generateWorld(40,40,.3);
 
@@ -291,6 +293,9 @@ var house4 = generateCube(3.4, 3, 0, roofColor[0], roofColor[1], roofColor[2], .
 var house5 = generateTube(6.3, -4, 0, roofColor[0], roofColor[1], roofColor[2], 8, .4, .4, 100);
 
 
+// var beef1 = generateCurveMeat(1, 6, 3, beefColor[0], beefColor[1], beefColor[2], .3, .3, .2, 100);
+// var beef2 = generateCurveMeat(0, 0, 0, beefColor[0], beefColor[1], beefColor[2], .0, .0, .0, 100);
+// var beef3 = generateTube(0, 0, 0, 1, 1, 1, .2, .1, .1, 100);
 
 // END COORDINATE FOR ENVIRONTMENT
 // END COORDINATE FOR ENVIRONTMENT
@@ -490,68 +495,6 @@ var house5 = generateTube(6.3, -4, 0, roofColor[0], roofColor[1], roofColor[2], 
   var KAKI_KANAN5_COLORS = createColorBuffer(GL, kakiKanan5);
   var KAKI_KANAN5_FACES = createFacesBuffer(GL, kakiKanan5);
 
-  var BUFFER_JERRY = [
-    // TANGAN KIRI
-    TANGAN_KIRI1_VERTEX, TANGAN_KIRI1_COLORS, TANGAN_KIRI1_FACES,
-    TANGAN_KIRI2_VERTEX, TANGAN_KIRI2_COLORS, TANGAN_KIRI2_FACES,
-    TANGAN_KIRI3_VERTEX, TANGAN_KIRI3_COLORS, TANGAN_KIRI3_FACES,
-    TANGAN_KIRI4_VERTEX, TANGAN_KIRI4_COLORS, TANGAN_KIRI4_FACES,
-    TANGAN_KIRI5_VERTEX, TANGAN_KIRI5_COLORS, TANGAN_KIRI5_FACES,
-
-    // TANGAN KANAN
-    TANGAN_KANAN1_VERTEX, TANGAN_KANAN1_COLORS, TANGAN_KANAN1_FACES,
-    TANGAN_KANAN2_VERTEX, TANGAN_KANAN2_COLORS, TANGAN_KANAN2_FACES,
-    TANGAN_KANAN3_VERTEX, TANGAN_KANAN3_COLORS, TANGAN_KANAN3_FACES,
-    TANGAN_KANAN4_VERTEX, TANGAN_KANAN4_COLORS, TANGAN_KANAN4_FACES,
-    TANGAN_KANAN5_VERTEX, TANGAN_KANAN5_COLORS, TANGAN_KANAN5_FACES,
-
-    // BADAN
-    BADAN1_VERTEX, BADAN1_COLORS, BADAN1_FACES,
-    BADAN2_VERTEX, BADAN2_COLORS, BADAN2_FACES,
-
-    // BADAN BAWAH
-    BADAN_BAWAH_VERTEX, BADAN_BAWAH_COLORS, BADAN_BAWAH_FACES,
-
-    // LEHER
-    LEHER1_VERTEX, LEHER1_COLORS, LEHER1_FACES,
-
-    // KEPALA
-    KEPALA1_VERTEX, KEPALA1_COLORS, KEPALA1_FACES,
-
-    // HIDUNG
-    HIDUNG_VERTEX, HIDUNG_COLORS, HIDUNG_FACES,
-
-    // MATA
-    MATA1_VERTEX, MATA1_COLORS, MATA1_FACES,
-    MATA2_VERTEX, MATA2_COLORS, MATA2_FACES,
-    MATA3_VERTEX, MATA3_COLORS, MATA3_FACES,
-    MATA4_VERTEX, MATA4_COLORS, MATA4_FACES,
-
-    // TELINGA
-    TELINGA1_VERTEX, TELINGA1_COLORS, TELINGA1_FACES,
-    TELINGA2_VERTEX, TELINGA2_COLORS, TELINGA2_FACES,
-    TELINGA3_VERTEX, TELINGA3_COLORS, TELINGA3_FACES,
-    TELINGA4_VERTEX, TELINGA4_COLORS, TELINGA4_FACES,
-
-    // MULUT
-    RAHANG_VERTEX, RAHANG_COLORS, RAHANG_FACES,
-
-    // KAKI KIRI
-    KAKI_KIRI1_VERTEX, KAKI_KIRI1_COLORS, KAKI_KIRI1_FACES,
-    KAKI_KIRI2_VERTEX, KAKI_KIRI2_COLORS, KAKI_KIRI2_FACES,
-    KAKI_KIRI3_VERTEX, KAKI_KIRI3_COLORS, KAKI_KIRI3_FACES,
-    KAKI_KIRI4_VERTEX, KAKI_KIRI4_COLORS, KAKI_KIRI4_FACES,
-    KAKI_KIRI5_VERTEX, KAKI_KIRI5_COLORS, KAKI_KIRI5_FACES,
-
-    // KAKI KANAN
-    KAKI_KANAN1_VERTEX, KAKI_KANAN1_COLORS, KAKI_KANAN1_FACES,
-    KAKI_KANAN2_VERTEX, KAKI_KANAN2_COLORS, KAKI_KANAN2_FACES,
-    KAKI_KANAN3_VERTEX, KAKI_KANAN3_COLORS, KAKI_KANAN3_FACES,
-    KAKI_KANAN4_VERTEX, KAKI_KANAN4_COLORS, KAKI_KANAN4_FACES,
-    KAKI_KANAN5_VERTEX, KAKI_KANAN5_COLORS, KAKI_KANAN5_FACES
-];
-
-
 //  END BUFFER FOR JERRY
 //  END BUFFER FOR JERRY
 //  END BUFFER FOR JERRY
@@ -591,6 +534,19 @@ var HOUSE4_FACES = createFacesBuffer(GL, house4);
 var HOUSE5_VERTEX = createVertexBuffer(GL, house5);
 var HOUSE5_COLORS = createColorBuffer(GL, house5);
 var HOUSE5_FACES = createFacesBuffer(GL, house5);
+
+// var BEEF1_VERTEX = createVertexBuffer(GL, beef1);
+// var BEEF1_COLORS = createColorBuffer(GL, beef1);
+// var BEEF1_FACES = createFacesBuffer(GL, beef1);
+
+// var BEEF2_VERTEX = createVertexBuffer(GL, beef2);
+// var BEEF2_COLORS = createColorBuffer(GL, beef2);
+// var BEEF2_FACES = createFacesBuffer(GL, beef2);
+
+// var BEEF3_VERTEX = createVertexBuffer(GL, beef3);
+// var BEEF3_COLORS = createColorBuffer(GL, beef3);
+// var BEEF3_FACES = createFacesBuffer(GL, beef3);
+
 // END BUFFER FOR WORLD
 // END BUFFER FOR WORLD
 // END BUFFER FOR WORLD
@@ -624,6 +580,7 @@ var HOUSE5_FACES = createFacesBuffer(GL, house5);
   // 
   var TANGAN_KIRI_ATAS_MATRIX = LIBS.get_I4();
   var TANGAN_KIRI_BAWAH_MATRIX = LIBS.get_I4();
+  var BEEF_MATRIX = LIBS.get_I4();
 
   //
   // TANGAN KANAN
@@ -654,28 +611,7 @@ var HOUSE5_FACES = createFacesBuffer(GL, house5);
   // 
   var KEPALA_MATRIX =  LIBS.get_I4();
 
-  var JERRY_MATRIX = [
-    // BADAN
-    BADAN_MATRIX,
-
-    // KEPALA
-    KEPALA_MATRIX,
-
-    // TANGAN KIRI
-    TANGAN_KIRI_ATAS_MATRIX, TANGAN_KIRI_BAWAH_MATRIX,
-
-    // TANGAN KANAN
-    TANGAN_KANAN_ATAS_MATRIX, TANGAN_KANAN_BAWAH_MATRIX,
-
-    // KAKI KIRI
-    KAKI_KIRI_ATAS_MATRIX, KAKI_KIRI_BAWAH_MATRIX,
-
-    // KAKI KANAN
-    KAKI_KANAN_ATAS_MATRIX, KAKI_KANAN_BAWAH_MATRIX
-];
-
-
-  LIBS.translateZ(VIEW_MATRIX, -15);
+  LIBS.translateZ(VIEW_MATRIX, -10);
   LIBS.translateY(VIEW_MATRIX, -1);
  
 // END MATRIX FOR JERRY
@@ -743,11 +679,12 @@ var HOUSE5_MATRIX = LIBS.get_I4();
   // 
   // BADAN MUTER
   // 
-  var BodyTime = 0;
-  var BodyTurn = "KANAN";
-  var KF_BodyThen = 0;
-  var KF_Body = 0;
+  var RunningTime = 0;
+  var RunningTurn = "KANAN";
+  var KF_RunningThen = 0;
+  var KF_Running = 0;
 
+  var EndingTime = 0;
   /*=========================================================== */
   /*========================= ANIMATE ========================= */
   /*=========================================================== */
@@ -789,6 +726,8 @@ var HOUSE5_MATRIX = LIBS.get_I4();
     TANGAN_KIRI_ATAS_MATRIX = LIBS.get_I4();
     TANGAN_KIRI_BAWAH_MATRIX = LIBS.get_I4();
 
+
+
   // 
   // TANGAN KANAN
   // 
@@ -812,25 +751,25 @@ var HOUSE5_MATRIX = LIBS.get_I4();
 
 
 WORLD_MATRIX = LIBS.get_I4();
-LIBS.rotateY(WORLD_MATRIX, theta);
+// LIBS.rotateY(WORLD_MATRIX, theta);
 
 HOUSE2_MATRIX = LIBS.get_I4();
 LIBS.rotateZ(HOUSE2_MATRIX, LIBS.degToRad(90));
-LIBS.rotateY(HOUSE2_MATRIX, theta);
+// LIBS.rotateY(HOUSE2_MATRIX, theta);
 
 HOUSE3_MATRIX = LIBS.get_I4();
 LIBS.rotateY(HOUSE3_MATRIX, LIBS.degToRad(-90));
 LIBS.rotateX(HOUSE3_MATRIX, LIBS.degToRad(-30));
-LIBS.rotateY(HOUSE3_MATRIX, theta);
+// LIBS.rotateY(HOUSE3_MATRIX, theta);
 
 HOUSE4_MATRIX = LIBS.get_I4();
 LIBS.rotateY(HOUSE4_MATRIX, LIBS.degToRad(90));
 LIBS.rotateX(HOUSE4_MATRIX, LIBS.degToRad(30));
-LIBS.rotateY(HOUSE4_MATRIX, theta);
+// LIBS.rotateY(HOUSE4_MATRIX, theta);
 
 HOUSE5_MATRIX = LIBS.get_I4();
 LIBS.rotateZ(HOUSE5_MATRIX, LIBS.degToRad(90));
-LIBS.rotateY(HOUSE5_MATRIX, theta);
+// LIBS.rotateY(HOUSE5_MATRIX, theta);
 
 
 // END WORLD TIME CONTROL
@@ -861,10 +800,10 @@ LIBS.rotateY(HOUSE5_MATRIX, theta);
       KAKI_KIRI_ATAS_MATRIX = LIBS.get_I4();
       KAKI_KIRI_BAWAH_MATRIX = LIBS.get_I4();
 
-      if(time < 20){
-        if(KakiKiriTime <= -.2){
+     
+        if(KakiKiriTime <= -.4){
           KakiKiriReverse = false;
-        }else if(KakiKiriTime >= .2){
+        }else if(KakiKiriTime >= .4){
           KakiKiriReverse = true;
         }
 
@@ -876,16 +815,15 @@ LIBS.rotateY(HOUSE5_MATRIX, theta);
         
         KF_KakiKiriAtas = LIBS.degToRad(KakiKiriTime);
         KF_KakiKiriBawah = LIBS.degToRad(KakiKiriTime);
-      }
 
       KAKI_KANAN_ATAS_MATRIX = LIBS.get_I4();
       KAKI_KANAN_BAWAH_MATRIX = LIBS.get_I4();
 
 
-      if(time < 20){
-      if(KakiKananTime <= -.2){
+      
+      if(KakiKananTime <= -.4){
         KakiKananReverse = true;
-      }else if(KakiKananTime >= .2){
+      }else if(KakiKananTime >= .4){
         KakiKananReverse = false;
       }
       
@@ -896,7 +834,7 @@ LIBS.rotateY(HOUSE5_MATRIX, theta);
       }
         KF_KakiKananAtas = LIBS.degToRad(KakiKananTime);
         KF_KakiKananBawah = LIBS.degToRad(KakiKananTime);
-      }
+      
 
     LIBS.rotateX(KAKI_KIRI_ATAS_MATRIX, KF_KakiKiriAtas);
     LIBS.rotateX(KAKI_KIRI_BAWAH_MATRIX, KF_KakiKiriBawah);
@@ -907,22 +845,63 @@ LIBS.rotateY(HOUSE5_MATRIX, theta);
     //
     // BADAN
     //
-
-    // Rotate Mouse
-    LIBS.rotateY(BADAN_MATRIX, theta);
-    LIBS.rotateY(KEPALA_MATRIX, theta);
-
-    LIBS.rotateY(TANGAN_KIRI_ATAS_MATRIX, theta);
-    LIBS.rotateY(TANGAN_KIRI_BAWAH_MATRIX, theta);
-
-    LIBS.rotateY(TANGAN_KANAN_ATAS_MATRIX, theta);
-    LIBS.rotateY(TANGAN_KANAN_BAWAH_MATRIX, theta);
-
-    LIBS.rotateY(KAKI_KANAN_ATAS_MATRIX, theta);
-    LIBS.rotateY(KAKI_KANAN_BAWAH_MATRIX, theta);
     
-    LIBS.rotateY(KAKI_KIRI_ATAS_MATRIX, theta);
-    LIBS.rotateY(KAKI_KIRI_BAWAH_MATRIX, theta);
+    //
+    // GERAK IKUT KAKI  
+    // 
+    LIBS.rotateX(BADAN_MATRIX, KF_KakiKananBawah);
+    LIBS.rotateX(KEPALA_MATRIX, KF_KakiKananBawah);
+    LIBS.rotateX(TANGAN_KIRI_BAWAH_MATRIX, KF_KakiKananBawah);
+    LIBS.rotateX(TANGAN_KIRI_ATAS_MATRIX, KF_KakiKananBawah);
+    LIBS.rotateX(TANGAN_KANAN_ATAS_MATRIX, KF_KakiKananBawah);
+    LIBS.rotateX(TANGAN_KANAN_BAWAH_MATRIX, KF_KakiKananBawah);
+
+
+    //
+    // LARI KELILING RUMAH
+    // 
+
+    if(time < 6.3){
+    RunningTime += deltaTime*0.2
+
+    LIBS.rotateY(BADAN_MATRIX, RunningTime);
+    LIBS.rotateY(KEPALA_MATRIX, RunningTime);
+
+    LIBS.rotateY(TANGAN_KIRI_ATAS_MATRIX, RunningTime);
+    LIBS.rotateY(TANGAN_KIRI_BAWAH_MATRIX, RunningTime);
+
+    LIBS.rotateY(TANGAN_KANAN_ATAS_MATRIX, RunningTime);
+    LIBS.rotateY(TANGAN_KANAN_BAWAH_MATRIX, RunningTime);
+
+    LIBS.rotateY(KAKI_KANAN_ATAS_MATRIX, RunningTime);
+    LIBS.rotateY(KAKI_KANAN_BAWAH_MATRIX, RunningTime);
+    
+    LIBS.rotateY(KAKI_KIRI_ATAS_MATRIX, RunningTime);
+    LIBS.rotateY(KAKI_KIRI_BAWAH_MATRIX, RunningTime);
+
+    LIBS.rotateY(BEEF_MATRIX, RunningTime);
+    }else{
+      EndingTime += deltaTime*0.2
+
+      LIBS.translateZ(BADAN_MATRIX, EndingTime);
+      LIBS.translateZ(KEPALA_MATRIX, EndingTime);
+  
+      LIBS.translateZ(TANGAN_KIRI_ATAS_MATRIX, EndingTime);
+      LIBS.translateZ(TANGAN_KIRI_BAWAH_MATRIX, EndingTime);
+  
+      LIBS.translateZ(TANGAN_KANAN_ATAS_MATRIX, EndingTime);
+      LIBS.translateZ(TANGAN_KANAN_BAWAH_MATRIX, EndingTime);
+  
+      LIBS.translateZ(KAKI_KANAN_ATAS_MATRIX, EndingTime);
+      LIBS.translateZ(KAKI_KANAN_BAWAH_MATRIX, EndingTime);
+      
+      LIBS.translateZ(KAKI_KIRI_ATAS_MATRIX, EndingTime);
+      LIBS.translateZ(KAKI_KIRI_BAWAH_MATRIX, EndingTime);
+  
+      LIBS.translateZ(BEEF_MATRIX, EndingTime);
+    }
+
+
 
     // TUBE ATAS
     GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KIRI1_VERTEX);
@@ -1516,9 +1495,7 @@ LIBS.rotateY(HOUSE5_MATRIX, theta);
 
     GL.drawElements(GL.TRIANGLES, kakiKanan5.faces.length, GL.UNSIGNED_SHORT, 0);
     
-
-
-
+    
     // END DRAW JERRY
     // END DRAW JERRY
     // END DRAW JERRY

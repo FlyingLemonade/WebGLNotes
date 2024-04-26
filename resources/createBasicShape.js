@@ -375,3 +375,112 @@ function generateSphere(x, y, z, c1, c2, c3, radius, segments) {
         return { vertices: vertices, colors: colors, faces: faces };
     }
 
+    function generateCurveMeat(x,y,z,c1,c2,c3, height, bottomRadius, topRadius, segments) {
+        var angle_increment = (2 * Math.PI) / segments;
+        var vertices = [];
+        var colors = [];
+        var faces = [];
+      
+        for (var i = 0; i < segments; i++) {
+          var t = i / (segments);
+      
+          var point = getBezierPoint(t);
+          var x = point[0];
+          var y = point[1];
+          var z = point[2];
+      
+          var angle = i * angle_increment;
+      
+          vertices.push(x + bottomRadius, y, z + bottomRadius );
+          vertices.push(x + bottomRadius * Math.cos(angle + angle_increment), y, z + bottomRadius * Math.sin(angle + angle_increment));
+      
+          vertices.push(x + topRadius, y + height, z + topRadius );
+          vertices.push(x + topRadius * Math.cos(angle + angle_increment), y + height, z + topRadius * Math.sin(angle + angle_increment));
+      
+          colors.push(c1, c2, c3);
+          colors.push(c1, c2, c3);
+          colors.push(c1, c2, c3);
+          colors.push(c1, c2, c3);
+      
+          var baseIndex = i * 4;
+          faces.push(baseIndex, baseIndex + 1, baseIndex + 2);
+          faces.push(baseIndex + 1, baseIndex + 3, baseIndex + 2);
+        }
+      
+        for (var i = 0; i < segments - 1; i++) {
+          faces.push(i * 4, (i + 1) * 4, vertices.length / 3 - 2);
+          faces.push(i * 4 + 2, (i + 1) * 4 + 2, vertices.length / 3 - 1);
+      }
+      
+          faces.push((segments - 1) * 4, 0, vertices.length / 3 - 2);
+          faces.push((segments - 1) * 4 + 2, 2, vertices.length / 3 - 1);
+      
+        return { vertices: vertices, colors: colors, faces: faces };
+      }
+      
+       
+      function generateBSpline(controlPoint, m, degree, centered) {
+        var curves = [];
+        var knotVector = [];
+    
+        var n = controlPoint.length / 3; // Mengubah nilai n untuk tiga dimensi
+    
+        // Calculate the knot values based on the degree and number of control points
+        for (var i = 0; i < n + degree + 1; i++) {
+            if (i < degree + 1) {
+                knotVector.push(0);
+            } else if (i >= n) {
+                knotVector.push(n - degree);
+            } else {
+                knotVector.push(i - degree);
+            }
+        }
+    
+        var basisFunc = function(i, j, t) {
+            if (j == 0) {
+                if (knotVector[i] <= t && t < knotVector[(i + 1)]) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+    
+            var den1 = knotVector[i + j] - knotVector[i];
+            var den2 = knotVector[i + j + 1] - knotVector[i + 1];
+    
+            var term1 = 0;
+            var term2 = 0;
+    
+            if (den1 != 0 && !isNaN(den1)) {
+                term1 = ((t - knotVector[i]) / den1) * basisFunc(i, j - 1, t);
+            }
+            if (den2 != 0 && !isNaN(den2)) {
+                term2 = ((knotVector[i + j + 1] - t) / den2) * basisFunc(i + 1, j - 1, t);
+            }
+            return term1 + term2;
+        };
+    
+        for (var t = 0; t < m; t++) {
+            var x = 0;
+            var y = 0;
+            var z = 0; // Menambah variabel z untuk dimensi ketiga
+            var u = (t / m * (knotVector[controlPoint.length / 3] - knotVector[degree])) + knotVector[degree];
+            for (var key = 0; key < n; key++) {
+                var C = basisFunc(key, degree, u);
+                x += (controlPoint[key * 3] * C);
+                y += (controlPoint[key * 3 + 1] * C);
+                z += (controlPoint[key * 3 + 2] * C); // Menghitung komponen z
+            }
+            curves.push(x);
+            curves.push(y);
+            curves.push(z); // Menambahkan komponen z ke hasil kurva
+            if (centered) {
+                curves.push(0);
+                curves.push(0.4);
+                curves.push(0); // Menambahkan komponen z yang terpusat ke hasil kurva
+            }
+        }
+        return curves;
+
+    
+}

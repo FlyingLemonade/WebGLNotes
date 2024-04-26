@@ -31,8 +31,30 @@ function generateEar(x, y, z, c1, c2, c3, a, b, c, segments) {
 
   return { vertices: vertices, colors: colors, faces: faces };
 }
+var basisFunc = function(i,j,t){
+  if (j == 0){
+    if(knotVector[i] <= t && t<(knotVector[(i+1)])){
+      return 1;
+    }else{
+      return 0;
+    }
+  }
 
-  
+  var den1 = knotVector[i + j] - knotVector[i];
+  var den2 = knotVector[i + j + 1] - knotVector[i + 1];
+ 
+  var term1 = 0;
+  var term2 = 0;
+
+  if (den1 != 0 && !isNaN(den1)) {
+    term1 = ((t - knotVector[i]) / den1) * basisFunc(i,j-1,t);
+  }
+  if (den2 != 0 && !isNaN(den2)) {
+    term2 = ((knotVector[i + j + 1] - t) / den2) * basisFunc(i+1,j-1,t);
+  }
+  return term1 + term2;
+}
+
   function main() {
     var CANVAS = document.getElementById("myCanvas");
   
