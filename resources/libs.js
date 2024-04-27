@@ -113,6 +113,41 @@ var LIBS = {
   radToDeg(r) {
     return r * 180 / Math.PI;
   },
+  
+  multiply: function(m1, m2){
+    var res = this.get_I4();
+    var N=4;
+
+    for(var i=0; i<N; i++){
+      for(var j =0; j<N; j++){
+        res[i*N+j] = 0;
+        for(var k=0; k<N; k++){
+          res[i*N+j] += m1[i*N+k] * m2[k*N+j];
+        }
+      }
+    }
+    return res;
+  },
+
+  fromScaling: function(out, v) {
+    out[0] = v[0];
+    out[1] = 0;
+    out[2] = 0;
+    out[3] = 0;
+    out[4] = 0;
+    out[5] = v[1];
+    out[6] = 0;
+    out[7] = 0;
+    out[8] = 0;
+    out[9] = 0;
+    out[10] = v[2];
+    out[11] = 0;
+    out[12] = 0;
+    out[13] = 0;
+    out[14] = 0;
+    out[15] = 1;
+    return out;
+  }
 
 
 };

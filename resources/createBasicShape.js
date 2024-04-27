@@ -381,15 +381,11 @@ function generateSphere(x, y, z, c1, c2, c3, radius, segments) {
         var colors = [];
         var faces = [];
       
-        for (var i = 0; i < segments; i++) {
+        for (var i = 0; i < segments; i+= 0.15) {
           var t = i / (segments);
+    
       
-          var point = getBezierPoint(t);
-          var x = point[0];
-          var y = point[1];
-          var z = point[2];
-      
-          var angle = i * angle_increment;
+          var angle = i;
       
           vertices.push(x + bottomRadius, y, z + bottomRadius );
           vertices.push(x + bottomRadius * Math.cos(angle + angle_increment), y, z + bottomRadius * Math.sin(angle + angle_increment));
@@ -403,17 +399,21 @@ function generateSphere(x, y, z, c1, c2, c3, radius, segments) {
           colors.push(c1, c2, c3);
       
           var baseIndex = i * 4;
-          faces.push(baseIndex, baseIndex + 1, baseIndex + 2);
-          faces.push(baseIndex + 1, baseIndex + 3, baseIndex + 2);
-        }
-      
-        for (var i = 0; i < segments - 1; i++) {
+          faces.push(baseIndex, baseIndex + 1, baseIndex + 4); // Triangle 1
+          faces.push(baseIndex, baseIndex + 2, baseIndex + 6); // Triangle 2
+      }
+    
+      // Closing faces for top and bottom circles
+      for (var i = 0; i < segments - 1; i++) {
+          // Bottom circle
           faces.push(i * 4, (i + 1) * 4, vertices.length / 3 - 2);
+          // Top circle
           faces.push(i * 4 + 2, (i + 1) * 4 + 2, vertices.length / 3 - 1);
       }
-      
-          faces.push((segments - 1) * 4, 0, vertices.length / 3 - 2);
-          faces.push((segments - 1) * 4 + 2, 2, vertices.length / 3 - 1);
+    
+      // Close the last segment with the first one
+      faces.push((segments - 1) * 4, 0, vertices.length / 3 - 2);
+      faces.push((segments - 1) * 4 + 2, 2, vertices.length / 3 - 1);
       
         return { vertices: vertices, colors: colors, faces: faces };
       }
@@ -483,4 +483,99 @@ function generateSphere(x, y, z, c1, c2, c3, radius, segments) {
         return curves;
 
     
+}
+function generateTailCurve(x, y, z, a, b, c, c1, c2, c3, rotationX, rotationY, rotationZ) {
+    var vertices = [];
+    var colors = [];
+  
+    for (var i = 0.2; i <= 4; i += 0.2) {
+  
+            var xCoord = i
+            var yCoord = Math.pow((i-2), 3)/3 + 1;
+            var zCoord = 0;
+  
+            // Apply rotations
+            var rotatedX = xCoord - x;
+            var rotatedY = yCoord - y;
+            var rotatedZ = zCoord - z;
+  
+            // Rotate around X axis
+            var tempY = rotatedY;
+            rotatedY = tempY * Math.cos(rotationX) + rotatedZ * Math.sin(rotationX);
+            rotatedZ = -tempY * Math.sin(rotationX) + rotatedZ * Math.cos(rotationX);
+  
+            // Rotate around Y axis
+            var tempX = rotatedX;
+            rotatedX = tempX * Math.cos(rotationY) - rotatedZ * Math.sin(rotationY);
+            rotatedZ = tempX * Math.sin(rotationY) + rotatedZ * Math.cos(rotationY);
+  
+            // Rotate around Z axis
+            var tempX2 = rotatedX;
+            rotatedX = tempX2 * Math.cos(rotationZ) + rotatedY * Math.sin(rotationZ);
+            rotatedY = -tempX2 * Math.sin(rotationZ) + rotatedY * Math.cos(rotationZ);
+  
+            // Translate the vertex back to its original position
+            rotatedX += x;
+            rotatedY += y;
+            rotatedZ += z;
+
+            rotatedX += a;
+            rotatedY += b;
+            rotatedZ += c;
+  
+            vertices.push(rotatedX, rotatedY, rotatedZ);
+  
+            colors.push(c1, c2, c3);
+        
+    }
+
+    for (var i = 3.8; i >= 0; i -= 0.2) {
+  
+        var xCoord = i
+        var yCoord = Math.pow((i-2), 3)/3 + 1;
+        var zCoord = 0;
+
+        // Apply rotations
+        var rotatedX = xCoord - x;
+        var rotatedY = yCoord - y;
+        var rotatedZ = zCoord - z;
+
+        // Rotate around X axis
+        var tempY = rotatedY;
+        rotatedY = tempY * Math.cos(rotationX) + rotatedZ * Math.sin(rotationX);
+        rotatedZ = -tempY * Math.sin(rotationX) + rotatedZ * Math.cos(rotationX);
+
+        // Rotate around Y axis
+        var tempX = rotatedX;
+        rotatedX = tempX * Math.cos(rotationY) - rotatedZ * Math.sin(rotationY);
+        rotatedZ = tempX * Math.sin(rotationY) + rotatedZ * Math.cos(rotationY);
+
+        // Rotate around Z axis
+        var tempX2 = rotatedX;
+        rotatedX = tempX2 * Math.cos(rotationZ) + rotatedY * Math.sin(rotationZ);
+        rotatedY = -tempX2 * Math.sin(rotationZ) + rotatedY * Math.cos(rotationZ);
+
+        // Translate the vertex back to its original position
+        rotatedX += x;
+        rotatedY += y;
+        rotatedZ += z;
+
+        rotatedX += a;
+        rotatedY -= 3.2;
+        rotatedZ -= -6.3;
+
+        vertices.push(rotatedX, rotatedY, rotatedZ);
+
+        colors.push(c1, c2, c3);
+    
+}
+
+    var faces = [];
+    segments = 37;
+    for (var i = 0; i < segments; i++) {
+            faces.push(i, i+1, segments-i);
+            faces.push(i+1, segments-i, segments-i-1);
+    }
+  
+    return { vertices: vertices, colors: colors, faces: faces };
 }
