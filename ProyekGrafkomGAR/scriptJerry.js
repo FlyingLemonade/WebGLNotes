@@ -506,13 +506,13 @@ function main() {
     then = time;
 
 
-    if (!drag) {
-      dx *= friction;
-      dy *= friction;
+    // if (!drag) {
+    //   dx *= friction;
+    //   dy *= friction;
 
-      theta += (dx * 2 * Math.PI) / CANVAS.width;
-      alpha += (dy * 2 * Math.PI) / CANVAS.height;
-    }
+    //   theta += (dx * 2 * Math.PI) / CANVAS.width;
+    //   alpha += (dy * 2 * Math.PI) / CANVAS.height;
+    // }
 
 
   /*=========================================================== */

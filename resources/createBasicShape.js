@@ -376,19 +376,19 @@ function generateSphere(x, y, z, c1, c2, c3, radius, segments) {
     }
 
     function generateCurveMeat(x,y,z,c1,c2,c3, height, bottomRadius, topRadius, segments) {
-        var angle_increment = (2 * Math.PI) / segments;
+        
         var vertices = [];
         var colors = [];
         var faces = [];
       
         for (var i = 0; i < segments; i+= 0.15) {
-          var angle = i;
+          var angle = i + (2 * Math.PI) / segments;
       
           vertices.push(x + bottomRadius, y, z + bottomRadius );
-          vertices.push(x + bottomRadius * Math.cos(angle + angle_increment), y, z + bottomRadius * Math.sin(angle + angle_increment));
+          vertices.push(x + bottomRadius * Math.cos(angle), y, z + bottomRadius * Math.sin(angle));
       
           vertices.push(x + topRadius, y + height, z + topRadius );
-          vertices.push(x + topRadius * Math.cos(angle + angle_increment), y + height, z + topRadius * Math.sin(angle + angle_increment));
+          vertices.push(x + topRadius * Math.cos(angle), y + height, z + topRadius * Math.sin(angle));
       
           colors.push(c1, c2, c3);
           colors.push(c1, c2, c3);
@@ -400,15 +400,12 @@ function generateSphere(x, y, z, c1, c2, c3, radius, segments) {
           faces.push(baseIndex, baseIndex + 2, baseIndex + 6); // Triangle 2
       }
     
-      // Closing faces for top and bottom circles
+  
       for (var i = 0; i < segments - 1; i++) {
-          // Bottom circle
           faces.push(i * 4, (i + 1) * 4, vertices.length / 3 - 2);
-          // Top circle
           faces.push(i * 4 + 2, (i + 1) * 4 + 2, vertices.length / 3 - 1);
       }
     
-      // Close the last segment with the first one
       faces.push((segments - 1) * 4, 0, vertices.length / 3 - 2);
       faces.push((segments - 1) * 4 + 2, 2, vertices.length / 3 - 1);
       
