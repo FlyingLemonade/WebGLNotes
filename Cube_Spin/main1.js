@@ -328,7 +328,7 @@ function main() {
 
   //Geser kamera karena ada yang ketumpuk
   //Karna objek di 0 dan kamera di 0
-  LIBS.translateZ(VIEW_MATRIX, -10);
+  LIBS.translateZ(VIEW_MATRIX, -30);
 
   GL.enable(GL.DEPTH_TEST);
   GL.depthFunc(GL.LEQUAL);
@@ -350,7 +350,7 @@ function main() {
       dX *= FRICTION;
       dY *= FRICTION;
     }
-
+  
     var radius = 2;
     var pos_x = radius * Math.cos(ALPHA) * Math.cos(THETA);
     var pos_y = radius * Math.sin(ALPHA);
@@ -360,13 +360,13 @@ function main() {
     MODEL_MATRIX = LIBS.get_I4();
     LIBS.rotateX(MODEL_MATRIX, ALPHA);
     LIBS.rotateY(MODEL_MATRIX, THETA);
-    LIBS.translateX(MODEL_MATRIX, -4);
+    LIBS.translateX(MODEL_MATRIX, -4); 
 
     //MATRIX 2
     MODEL_MATRIX2 = LIBS.get_I4();
-    LIBS.rotateX(MODEL_MATRIX2, -ALPHA);
-    LIBS.rotateY(MODEL_MATRIX2, -THETA);
-    LIBS.translateX(MODEL_MATRIX2, 4);
+    LIBS.rotateX(MODEL_MATRIX2, ALPHA);
+    LIBS.rotateY(MODEL_MATRIX2, THETA);
+    LIBS.translateX(MODEL_MATRIX2, -1);
 
     var temp = LIBS.get_I4();
     LIBS.translateX(temp, -6);
@@ -375,14 +375,16 @@ function main() {
     temp = LIBS.get_I4();
     LIBS.rotateY(temp, ALPHA);
     MODEL_MATRIX2 = LIBS.multiply(MODEL_MATRIX2, temp);
-    X_prev;
+   
     temp = LIBS.get_I4();
     LIBS.translateX(temp, 6);
     MODEL_MATRIX2 = LIBS.multiply(MODEL_MATRIX2, temp);
 
+
+    obj.MODEL_MATRIX = MODEL_MATRIX; 
     obj2.MODEL_MATRIX = MODEL_MATRIX2;
 
-    obj.MODEL_MATRIX = MODEL_MATRIX;
+   
     obj.render(VIEW_MATRIX, PROJECTION_MATRIX);
 
     GL.flush();

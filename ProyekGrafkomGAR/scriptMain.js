@@ -131,25 +131,27 @@ function main() {
   var bodyColor2 = [232/255, 196/255, 174/255]
   var earColor = [255/255, 206/255, 199/255]
   var eyeColor = [235/255, 236/255, 240/255, 42/255, 42/255, 39/255]
-
+  var beefColor = [156/255, 0/255, 1/255];
+  var beefColor2 = [202/255,197/255,135/255];
+  var boneColor = [253/255,255/255,243/255];
 
   // 
   //  TANGAN KIRI
   // 
-  var tanganKiri1 = generateSphere(-4.9, 2, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
-  var tanganKiri2 = generateTube(-4.9, 3.4, .05, bodyColor[0], bodyColor[1], bodyColor[2], 3, .8, .8, 100);
-  var tanganKiri3 = generateSphere(-4.9, 3.5, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
-  var tanganKiri4 = generateTube(-4.9, 5.6, .05, bodyColor[0], bodyColor[1], bodyColor[2], 1.6, .6, .6, 100);
-  var tanganKiri5 = generateSphere(-4.9, 5.9, .55, bodyColor[0], bodyColor[1], bodyColor[2], .6, 50);
+  var tanganKiri1 = generateSphere(-4.7, 2, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
+  var tanganKiri2 = generateTube(-4.7, 2, .05, bodyColor[0], bodyColor[1], bodyColor[2], 3, .8, .8, 100);
+  var tanganKiri3 = generateSphere(-4.7, 5.3, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
+  var tanganKiri4 = generateTube(-4.7, 5.8, .05, bodyColor[0], bodyColor[1], bodyColor[2], 2.4, .6, .6, 100);
+  var tanganKiri5 = generateSphere(-4.7, 8, .55, bodyColor[0], bodyColor[1], bodyColor[2], .6, 50);
 
   // 
   // TANGAN KANAN
   // 
-  var tanganKanan1 = generateSphere(1.6, 2, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
-  var tanganKanan2 = generateTube(1.6, 3.4, .05, bodyColor[0], bodyColor[1], bodyColor[2], 3, .8, .8, 100);
-  var tanganKanan3 = generateSphere(1.6, 3.5, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
-  var tanganKanan4 = generateTube(1.6, 5.6, .05, bodyColor[0], bodyColor[1], bodyColor[2], 1.6, .6, .6, 100);
-  var tanganKanan5 = generateSphere(1.6, 5.9, .55, bodyColor[0], bodyColor[1], bodyColor[2], .6, 50);
+  var tanganKanan1 = generateSphere(1.4, 2, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
+  var tanganKanan2 = generateTube(1.4, 2, .05, bodyColor[0], bodyColor[1], bodyColor[2], 3, .8, .8, 100);
+  var tanganKanan3 = generateSphere(1.4, 5.3, .55, bodyColor[0], bodyColor[1], bodyColor[2], .8, 50);
+  var tanganKanan4 = generateTube(1.4, 5.8, .05, bodyColor[0], bodyColor[1], bodyColor[2], 2.4, .6, .6, 100);
+  var tanganKanan5 = generateSphere(1.4, 8, .55, bodyColor[0], bodyColor[1], bodyColor[2], .6, 50);
 
   // 
   // BADAN
@@ -222,6 +224,13 @@ function main() {
   var kakiKanan4 = generateTube(-.3, -7.1, .05, bodyColor[0], bodyColor[1], bodyColor[2], 1, .3, .3, 100);
   var kakiKanan5 = generateSphere(-.3, -7.3, .55, bodyColor[0], bodyColor[1], bodyColor[2], .3, 50);
 
+  // 
+  //  BEEF
+  // 
+
+  var beef1 = generateCurveMeat(-.08, .8001, 4, beefColor[0], beefColor[1], beefColor[2], .1, .2, .2, 100);
+  var beef2 = generateCurveMeat(-.08, .8, 4, beefColor2[0], beefColor2[1], beefColor2[2], .1, .3, .3, 100);
+  var beef3 = generateTube(-.165, .8002, 3.96, boneColor[0], boneColor[1], boneColor[2], .1, .07, .07, 100);
   
   // 
   // KECILIN JERRY
@@ -408,7 +417,7 @@ for (var i = 0; i < childJerry.length; i++) {
   //
   // GESER-GESER SPIKE
 
-  var geserX_S1 = 0;
+  var geserX_S1 = .5;
   var geserY_S1 = .95;
   var geserZ_S1 = 4.5;
   
@@ -471,9 +480,9 @@ for (var i = 0; i < childJerry.length; i++) {
   // 
   // GESER-GESER TREE
   // 
-  var geserX_Tree = 3;
+  var geserX_Tree = 7;
   var geserY_Tree = 0;
-  var geserZ_Tree = 6;
+  var geserZ_Tree = 2;
   
   for (var i = 0; i < childTree.length; i++) {
       for (var j = 0; j < childTree[i].vertices.length; j += 3) {
@@ -495,6 +504,168 @@ for (var i = 0; i < childJerry.length; i++) {
 // END COORDINATE FOR TREE
 
 
+
+// COORDINATE FOR TOM
+// COORDINATE FOR TOM
+// COORDINATE FOR TOM
+// COORDINATE FOR TOM 
+// COORDINATE FOR TOM 
+// COORDINATE FOR TOM 
+
+
+  
+  // 
+  // COLOR
+  // 
+  var bodyColor_t = [128/255, 128/255, 128/255]
+  var bodyColor2_t = [191/255, 191/255, 191/255]
+  var eyeColor_t = [255/255, 255/255, 102/255, 42/255, 42/255, 39/255]
+
+  //
+  // EKOR
+  //
+  var ekor_t = generateTomTail([[-1.65, -2.8,-5], [-2,-4,-6], [2,-2,-7], [1,1,-7]], 100, 4, 0.3);
+
+  // 
+  //  TANGAN KIRI
+  // 
+  var tanganKiri1_t = generateSphere(-4.5, 2, .55, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], .7, 50);
+  var tanganKiri2_t = generateTube(-4.5, -1.4, .05, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], 3, .6, .6, 1000);
+  var tanganKiri3_t = generateSphere(-4.5, -1.5, .55, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], .6, 50);
+  var tanganKiri4_t = generateTube(-4.5, -3.4, .05, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], 1.6, .5, .5, 100);
+  var tanganKiri5_t = generateSphere(-4.5, -3.8, .55, bodyColor2_t[0], bodyColor2_t[1], bodyColor2_t[2], .6, 50);
+
+  // 
+  // TANGAN KANAN
+  // 
+  var tanganKanan1_t = generateSphere(1.2, 2, .55, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], .7, 50);
+  var tanganKanan2_t = generateTube(1.2, -1.4, .05, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], 3, .6, .6, 100);
+  var tanganKanan3_t = generateSphere(1.2, -1.5, .55, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], .6, 50);
+  var tanganKanan4_t = generateTube(1.2, -3.4, .05, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], 1.6, .5, .5, 100);
+  var tanganKanan5_t = generateSphere(1.2, -3.8, .55, bodyColor2_t[0], bodyColor2_t[1], bodyColor2_t[2], .6, 50);
+
+  // 
+  // BADAN
+  // 
+  var badan1_t = generateTube(-1.65, -2.8, 0, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], 5, 1.8, 2.3, 100);
+  var badan2_t = generateTube(-1.6, -2.6, 0.8, bodyColor2_t[0], bodyColor2_t[1], bodyColor2_t[2], 4, 1.35, 1.4, 100);
+
+  // 
+  // BADAN BAWAH
+  // 
+  var badanBawah_t = generateTube(-1.65, -4.2, 0, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], 2, .8, 1.8, 100);
+
+  // 
+  // LEHER 
+  //
+  var leher1_t = generateTube(-1.65, 2.2, 0, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], 1, 2.3, 1, 100);
+
+  // 
+  // KEPALA 
+  //
+  var kepala1_t = generateTorus(-1.65, 3.9, .1, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], 1.2, 0.7, 100, 100, 1.55, 0, 0);
+  var kepala2_t = generateTorus(-1.65, 4.9, .1, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], .1, 1.93, 100, 100, 1.55, 0, 0);
+
+  // 
+  // TELINGA
+  // 
+  var telinga1_t = generateElipticParabloid(.2, 7.2, .1, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], .7, .5, .5, 100, 1.6, 0, -2.6);
+  var telinga2_t = generateElipticParabloid(-3.5, 7.2, .1, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], .7, .5, .5, 100, 1.6, 0, 2.6);
+
+  var telinga3_t = generateElipticParabloid(.2, 7, .3, bodyColor2_t[0], bodyColor_t[1], bodyColor_t[2], .4, .4, .4, 100, 1.55, 0, -2.6);
+  var telinga4_t = generateElipticParabloid(-3.5, 7, .3, bodyColor2_t[0], bodyColor_t[1], bodyColor_t[2], .4, .4, .4, 100, 1.55, 0, 2.6);
+
+  // 
+  // MATA
+  // 
+  var mata1_t = generateEllipsoid(-2.3 , 5, 2 , .5, .6, .2, eyeColor_t[0], eyeColor_t[1], eyeColor_t[2], 100);
+  var mata2_t = generateEllipsoid(-2.3, 4.8, 2.1 , .2, .3, .2, eyeColor_t[3], eyeColor_t[4], eyeColor_t[5], 100);
+  var mata3_t = generateEllipsoid(-.8 , 5, 2 , .5, .6, .2, eyeColor_t[0], eyeColor_t[1], eyeColor_t[2], 100);
+  var mata4_t = generateEllipsoid(-.8, 4.8, 2.1 , .2, .3, .2, eyeColor_t[3], eyeColor_t[4], eyeColor_t[5], 100);
+  var mata5_t = generateElipticParabloid(-1, 5.8, 1.9, eyeColor_t[3], eyeColor_t[4], eyeColor_t[5], .3, .1, .1, 100, 0, 3, 0);
+  var mata6_t = generateElipticParabloid(-2.1, 5.8, 1.9, eyeColor_t[3], eyeColor_t[4], eyeColor_t[5], .3, .1, .1, 100, 0, 3, 0);
+ 
+  // 
+  // MULUT
+  // 
+
+  var rahang_t = generateTorus(-1.55, 3.68, 1.3, bodyColor2_t[0], bodyColor2_t[1], bodyColor2_t[2], .5, .8, 100, 100, 1.55, 0, 0);
+
+  // 
+  // HIDUNG 
+  // 
+  var hidung_t = generateEllipsoid(-1.43, 3.8, 2.6, .2, .2, .2, eyeColor_t[3], eyeColor_t[4], eyeColor_t[5], 100);
+
+  // 
+  // KAKI KIRI
+  // 
+
+  var kakiKiri1_t = generateSphere(-2.8, -3.5, .55, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], .8, 50);
+  var kakiKiri2_t = generateTube(-2.9, -5.4, .05, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], 1.5, .4, .6, 100);
+  var kakiKiri3_t = generateSphere(-2.9, -5.5, .55, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], .4, 50);
+  var kakiKiri4_t = generateTube(-2.9, -6.7, .05, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], 1, .3, .4, 100);
+  var kakiKiri5_t = generateSphere(-2.9, -7.1, .55, bodyColor2_t[0], bodyColor2_t[1], bodyColor2_t[2], .5, 50);
+
+  // 
+  // KAKI KANAN
+  // 
+
+  var kakiKanan1_t = generateSphere(-.4, -3.5, .55, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], .8, 50);
+  var kakiKanan2_t = generateTube(-.3, -5.4, .05, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], 1.5, .4, .6, 100);
+  var kakiKanan3_t = generateSphere(-.3, -5.5, .55, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], .4, 50);
+  var kakiKanan4_t = generateTube(-.3, -6.7, .05, bodyColor_t[0], bodyColor_t[1], bodyColor_t[2], 1, .3, .4, 100);
+  var kakiKanan5_t = generateSphere(-.3, -7.1, .55, bodyColor2_t[0], bodyColor2_t[1], bodyColor2_t[2], .5, 50);
+
+  // 
+  // KECILIN TOM
+  // 
+  var scaleFactor = 0.08; 
+  var childTom = [
+    ekor_t, tanganKiri1_t, tanganKiri2_t, tanganKiri3_t, tanganKiri4_t, tanganKiri5_t,
+    tanganKanan1_t, tanganKanan2_t, tanganKanan3_t, tanganKanan4_t, tanganKanan5_t,
+    badan1_t, badan2_t,
+    badanBawah_t,
+    leher1_t,
+    kepala1_t, kepala2_t,
+    telinga1_t, telinga2_t, telinga3_t, telinga4_t,
+    mata1_t, mata2_t, mata3_t, mata4_t,mata5_t, mata6_t,
+    rahang_t,
+    hidung_t,
+    kakiKiri1_t, kakiKiri2_t, kakiKiri3_t, kakiKiri4_t, kakiKiri5_t,
+    kakiKanan1_t, kakiKanan2_t, kakiKanan3_t, kakiKanan4_t, kakiKanan5_t
+  ];
+  
+  for(var i = 0;  i < childTom.length ; i++){
+    childTom[i].vertices = childTom[i].vertices.map(coord => coord * scaleFactor);
+  }
+ 
+// 
+// GESER-GESER TOM
+// 
+var geserX = -0.5;
+var geserY = .75;
+var geserZ = 4;
+
+for (var i = 0; i < childTom.length; i++) {
+    for (var j = 0; j < childTom[i].vertices.length; j += 3) {
+        childTom[i].vertices[j] += geserX;
+    }
+    for (var j = 1; j < childTom[i].vertices.length; j += 3) {
+      childTom[i].vertices[j] += geserY;
+    }
+    for (var j = 2; j < childTom[i].vertices.length; j += 3) {
+      childTom[i].vertices[j] += geserZ;
+    }
+}
+
+
+// END COORDINATE FOR TOM 
+// END COORDINATE FOR TOM 
+// END COORDINATE FOR TOM 
+// END COORDINATE FOR TOM 
+// END COORDINATE FOR TOM 
+// END COORDINATE FOR TOM
+
 // COORDINATE FOR ENVIRONTMENT
 // COORDINATE FOR ENVIRONTMENT
 // COORDINATE FOR ENVIRONTMENT
@@ -504,10 +675,9 @@ for (var i = 0; i < childJerry.length; i++) {
 
 var houseColor = [220/255, 211/255, 195/255];
 var roofColor = [165/255, 72/255, 66/255];
-var beefColor = [156/255, 0/255, 1/255];
-var beefColor2 = [202/255,197/255,135/255];
-var boneColor = [253/255,255/255,243/255];
-
+var doorColor = [0, 0, 0];
+var cloudColor = [211/255, 211/255, 211/255];
+var pathColor = [232/255, 160/255, 87/255];
 
 var world = generateWorld(40,40,.3);
 
@@ -516,12 +686,46 @@ var house2 = generateTube(4.23, -3, 0, houseColor[0], houseColor[1], houseColor[
 var house3 = generateCube(3.4, 3, 0, roofColor[0], roofColor[1], roofColor[2], .2, 8, 5);
 var house4 = generateCube(3.4, 3, 0, roofColor[0], roofColor[1], roofColor[2], .2, 8, 5);
 var house5 = generateTube(6.3, -4, 0, roofColor[0], roofColor[1], roofColor[2], 8, .4, .4, 100);
+var door = generateElipticParabloid(0, 1.7, 1.9, doorColor[2], doorColor[1], doorColor[2], .4, .4, .4, 100, 1.9, 0, LIBS.degToRad(180));
 
 
-var beef1 = generateCurveMeat(-.08, .8001, 4, beefColor[0], beefColor[1], beefColor[2], .1, .2, .2, 100);
-var beef2 = generateCurveMeat(-.08, .8, 4, beefColor2[0], beefColor2[1], beefColor2[2], .1, .3, .3, 100);
-var beef3 = generateTube(-.165, .8002, 3.96, boneColor[0], boneColor[1], boneColor[2], .1, .07, .07, 100);
+var cloudA1 = generateSphere(7, 7, 5, cloudColor[0], cloudColor[1], cloudColor[2], 1, 50)
+var cloudA2 = generateSphere(8, 7.5, 3.5, cloudColor[0], cloudColor[1], cloudColor[2], 1, 50)
+var cloudA3 = generateSphere(6, 6.5, 4.3, cloudColor[0], cloudColor[1], cloudColor[2], 1, 50)
+var cloudA4 = generateSphere(7, 8, 5, cloudColor[0], cloudColor[1], cloudColor[2], 1, 50)
+var cloudA5 = generateSphere(8.3, 7, 5, cloudColor[0], cloudColor[1], cloudColor[2], 1, 50)
+var cloudA6 = generateSphere(8, 7, 6, cloudColor[0], cloudColor[1], cloudColor[2], 1, 50)
 
+var cloudB1 = generateSphere(-7, 7, 2, cloudColor[0], cloudColor[1], cloudColor[2], 1, 50)
+var cloudB2 = generateSphere(-8, 7.5, 1.3, cloudColor[0], cloudColor[1], cloudColor[2], 1, 50)
+var cloudB3 = generateSphere(-6, 6.5, 2.3, cloudColor[0], cloudColor[1], cloudColor[2], 1, 50)
+var cloudB4 = generateSphere(-7, 8, 3, cloudColor[0], cloudColor[1], cloudColor[2], 1, 50)
+var cloudB5 = generateSphere(-8.3, 7, 2, cloudColor[0], cloudColor[1], cloudColor[2], 1, 50)
+var cloudB6 = generateSphere(-8, 7, 1, cloudColor[0], cloudColor[1], cloudColor[2], 1, 50)
+
+var path = generateCube(0, .12, 9.5, pathColor[0], pathColor[1], pathColor[2], 2, 23, 0.1);
+
+var cloudChild = [
+  cloudA1, cloudA2, cloudA3, cloudA4, cloudA5, cloudA6,
+  cloudB1, cloudB2, cloudB3, cloudB4, cloudB5, cloudB6
+];
+
+
+var geserX = -1;
+var geserY = -3;
+var geserZ = -7;
+
+for (var i = 0; i < cloudChild.length; i++) {
+    for (var j = 0; j < cloudChild[i].vertices.length; j += 3) {
+        cloudChild[i].vertices[j] += geserX;
+    }
+    for (var j = 1; j < cloudChild[i].vertices.length; j += 3) {
+      cloudChild[i].vertices[j] += geserY;
+    }
+    for (var j = 2; j < cloudChild[i].vertices.length; j += 3) {
+      cloudChild[i].vertices[j] += geserZ;
+    }
+}
 // END COORDINATE FOR ENVIRONTMENT
 // END COORDINATE FOR ENVIRONTMENT
 // END COORDINATE FOR ENVIRONTMENT
@@ -730,6 +934,212 @@ var beef3 = generateTube(-.165, .8002, 3.96, boneColor[0], boneColor[1], boneCol
 
 
 
+//  BUFFER FOR TOM
+//  BUFFER FOR TOM
+//  BUFFER FOR TOM
+//  BUFFER FOR TOM
+//  BUFFER FOR TOM
+
+  //
+  // EKOR
+  //
+  var EKOR_VERTEX_t = createVertexBuffer(GL, ekor_t);
+  var EKOR_COLORS_t = createColorBuffer(GL, ekor_t);
+  var EKOR_FACES_t = createFacesBuffer(GL, ekor_t);
+
+  // 
+  // TANGAN KIRI
+  // 
+  var TANGAN_KIRI1_VERTEX_t = createVertexBuffer(GL, tanganKiri1_t);
+  var TANGAN_KIRI1_COLORS_t = createColorBuffer(GL, tanganKiri1_t);
+  var TANGAN_KIRI1_FACES_t = createFacesBuffer(GL, tanganKiri1_t);
+
+  var TANGAN_KIRI2_VERTEX_t = createVertexBuffer(GL, tanganKiri2_t);
+  var TANGAN_KIRI2_COLORS_t = createColorBuffer(GL, tanganKiri2_t);
+  var TANGAN_KIRI2_FACES_t = createFacesBuffer(GL, tanganKiri2_t);
+
+  var TANGAN_KIRI3_VERTEX_t = createVertexBuffer(GL, tanganKiri3_t);
+  var TANGAN_KIRI3_COLORS_t = createColorBuffer(GL, tanganKiri3_t);
+  var TANGAN_KIRI3_FACES_t = createFacesBuffer(GL, tanganKiri3_t);
+
+  var TANGAN_KIRI4_VERTEX_t = createVertexBuffer(GL, tanganKiri4_t);
+  var TANGAN_KIRI4_COLORS_t = createColorBuffer(GL, tanganKiri4_t);
+  var TANGAN_KIRI4_FACES_t = createFacesBuffer(GL, tanganKiri4_t);
+  
+  var TANGAN_KIRI5_VERTEX_t = createVertexBuffer(GL, tanganKiri5_t);
+  var TANGAN_KIRI5_COLORS_t = createColorBuffer(GL, tanganKiri5_t);
+  var TANGAN_KIRI5_FACES_t = createFacesBuffer(GL, tanganKiri5_t);
+
+  // 
+  // TANGAN KANAN
+  // 
+  var TANGAN_KANAN1_VERTEX_t = createVertexBuffer(GL, tanganKanan1_t);
+  var TANGAN_KANAN1_COLORS_t = createColorBuffer(GL, tanganKanan1_t);
+  var TANGAN_KANAN1_FACES_t = createFacesBuffer(GL, tanganKanan1_t);
+
+  var TANGAN_KANAN2_VERTEX_t = createVertexBuffer(GL, tanganKanan2_t);
+  var TANGAN_KANAN2_COLORS_t = createColorBuffer(GL, tanganKanan2_t);
+  var TANGAN_KANAN2_FACES_t = createFacesBuffer(GL, tanganKanan2_t);
+
+  var TANGAN_KANAN3_VERTEX_t = createVertexBuffer(GL, tanganKanan3_t);
+  var TANGAN_KANAN3_COLORS_t = createColorBuffer(GL, tanganKanan3_t);
+  var TANGAN_KANAN3_FACES_t = createFacesBuffer(GL, tanganKanan3_t);
+
+  var TANGAN_KANAN4_VERTEX_t = createVertexBuffer(GL, tanganKanan4_t);
+  var TANGAN_KANAN4_COLORS_t = createColorBuffer(GL, tanganKanan4_t);
+  var TANGAN_KANAN4_FACES_t = createFacesBuffer(GL, tanganKanan4_t);
+  
+  var TANGAN_KANAN5_VERTEX_t = createVertexBuffer(GL, tanganKanan5_t);
+  var TANGAN_KANAN5_COLORS_t = createColorBuffer(GL, tanganKanan5_t);
+  var TANGAN_KANAN5_FACES_t = createFacesBuffer(GL, tanganKanan5_t);
+
+
+  // 
+  // BADAN
+  // 
+  var BADAN1_VERTEX_t = createVertexBuffer(GL, badan1_t);
+  var BADAN1_COLORS_t = createColorBuffer(GL, badan1_t);
+  var BADAN1_FACES_t = createFacesBuffer(GL, badan1_t);
+
+  var BADAN2_VERTEX_t = createVertexBuffer(GL, badan2_t);
+  var BADAN2_COLORS_t = createColorBuffer(GL, badan2_t);
+  var BADAN2_FACES_t = createFacesBuffer(GL, badan2_t);
+
+  // 
+  // BADAN BAWAH
+  // 
+  var BADAN_BAWAH_VERTEX_t = createVertexBuffer(GL, badanBawah_t);
+  var BADAN_BAWAH_COLORS_t = createColorBuffer(GL, badanBawah_t);
+  var BADAN_BAWAH_FACES_t = createFacesBuffer(GL, badanBawah_t);
+
+  // 
+  // LEHER
+  // 
+  var LEHER1_VERTEX_t = createVertexBuffer(GL, leher1_t);
+  var LEHER1_COLORS_t = createColorBuffer(GL, leher1_t);
+  var LEHER1_FACES_t = createFacesBuffer(GL, leher1_t);
+
+  // 
+  // KEPALA
+  // 
+  var KEPALA1_VERTEX_t = createVertexBuffer(GL, kepala1_t);
+  var KEPALA1_COLORS_t = createColorBuffer(GL, kepala1_t);
+  var KEPALA1_FACES_t = createFacesBuffer(GL, kepala1_t);
+
+  var KEPALA2_VERTEX_t = createVertexBuffer(GL, kepala2_t);
+  var KEPALA2_COLORS_t = createColorBuffer(GL, kepala2_t);
+  var KEPALA2_FACES_t = createFacesBuffer(GL, kepala2_t);
+
+  // 
+  // HIDUNG
+  // 
+
+  var HIDUNG_VERTEX_t = createVertexBuffer(GL, hidung_t);
+  var HIDUNG_COLORS_t = createColorBuffer(GL, hidung_t);
+  var HIDUNG_FACES_t = createFacesBuffer(GL, hidung_t);
+
+  // 
+  // MATA
+  // 
+  var MATA1_VERTEX_t = createVertexBuffer(GL, mata1_t);
+  var MATA1_COLORS_t = createColorBuffer(GL, mata1_t);
+  var MATA1_FACES_t = createFacesBuffer(GL, mata1_t);
+
+  var MATA2_VERTEX_t = createVertexBuffer(GL, mata2_t);
+  var MATA2_COLORS_t = createColorBuffer(GL, mata2_t);
+  var MATA2_FACES_t = createFacesBuffer(GL, mata2_t);
+
+  var MATA3_VERTEX_t = createVertexBuffer(GL, mata3_t);
+  var MATA3_COLORS_t = createColorBuffer(GL, mata3_t);
+  var MATA3_FACES_t = createFacesBuffer(GL, mata3_t);
+
+  var MATA4_VERTEX_t = createVertexBuffer(GL, mata4_t);
+  var MATA4_COLORS_t = createColorBuffer(GL, mata4_t);
+  var MATA4_FACES_t = createFacesBuffer(GL, mata4_t);
+
+  // 
+  // TELINGA
+  // 
+  var TELINGA1_VERTEX_t = createVertexBuffer(GL, telinga1_t);
+  var TELINGA1_COLORS_t = createColorBuffer(GL, telinga1_t);
+  var TELINGA1_FACES_t = createFacesBuffer(GL, telinga1_t);
+
+  var TELINGA2_VERTEX_t = createVertexBuffer(GL, telinga2_t);
+  var TELINGA2_COLORS_t = createColorBuffer(GL, telinga2_t);
+  var TELINGA2_FACES_t = createFacesBuffer(GL, telinga2_t);
+
+  var TELINGA3_VERTEX_t = createVertexBuffer(GL, telinga3_t);
+  var TELINGA3_COLORS_t = createColorBuffer(GL, telinga3_t);
+  var TELINGA3_FACES_t = createFacesBuffer(GL, telinga3_t);
+
+  var TELINGA4_VERTEX_t = createVertexBuffer(GL, telinga4_t);
+  var TELINGA4_COLORS_t = createColorBuffer(GL, telinga4_t);
+  var TELINGA4_FACES_t = createFacesBuffer(GL, telinga4_t);
+
+
+  // 
+  // MULUT
+  // 
+
+  // RAHANG
+  var RAHANG_VERTEX_t = createVertexBuffer(GL, rahang_t);
+  var RAHANG_COLORS_t = createColorBuffer(GL, rahang_t);
+  var RAHANG_FACES_t = createFacesBuffer(GL, rahang_t);
+
+
+
+  // 
+  // KAKI KIRI
+  // 
+  var KAKI_KIRI1_VERTEX_t = createVertexBuffer(GL, kakiKiri1_t);
+  var KAKI_KIRI1_COLORS_t = createColorBuffer(GL, kakiKiri1_t);
+  var KAKI_KIRI1_FACES_t = createFacesBuffer(GL, kakiKiri1_t);
+
+  var KAKI_KIRI2_VERTEX_t = createVertexBuffer(GL, kakiKiri2_t);
+  var KAKI_KIRI2_COLORS_t = createColorBuffer(GL, kakiKiri2_t);
+  var KAKI_KIRI2_FACES_t = createFacesBuffer(GL, kakiKiri2_t);
+
+  var KAKI_KIRI3_VERTEX_t = createVertexBuffer(GL, kakiKiri3_t);
+  var KAKI_KIRI3_COLORS_t = createColorBuffer(GL, kakiKiri3_t);
+  var KAKI_KIRI3_FACES_t = createFacesBuffer(GL, kakiKiri3_t);
+
+  var KAKI_KIRI4_VERTEX_t = createVertexBuffer(GL, kakiKiri4_t);
+  var KAKI_KIRI4_COLORS_t = createColorBuffer(GL, kakiKiri4_t);
+  var KAKI_KIRI4_FACES_t = createFacesBuffer(GL, kakiKiri4_t);
+  
+  var KAKI_KIRI5_VERTEX_t = createVertexBuffer(GL, kakiKiri5_t);
+  var KAKI_KIRI5_COLORS_t = createColorBuffer(GL, kakiKiri5_t);
+  var KAKI_KIRI5_FACES_t = createFacesBuffer(GL, kakiKiri5_t);
+
+  // 
+  // KAKI KANAN
+  // 
+  var KAKI_KANAN1_VERTEX_t = createVertexBuffer(GL, kakiKanan1_t);
+  var KAKI_KANAN1_COLORS_t = createColorBuffer(GL, kakiKanan1_t);
+  var KAKI_KANAN1_FACES_t = createFacesBuffer(GL, kakiKanan1_t);
+
+  var KAKI_KANAN2_VERTEX_t = createVertexBuffer(GL, kakiKanan2_t);
+  var KAKI_KANAN2_COLORS_t = createColorBuffer(GL, kakiKanan2_t);
+  var KAKI_KANAN2_FACES_t = createFacesBuffer(GL, kakiKanan2_t);
+
+  var KAKI_KANAN3_VERTEX_t = createVertexBuffer(GL, kakiKanan3_t);
+  var KAKI_KANAN3_COLORS_t = createColorBuffer(GL, kakiKanan3_t);
+  var KAKI_KANAN3_FACES_t = createFacesBuffer(GL, kakiKanan3_t);
+
+  var KAKI_KANAN4_VERTEX_t = createVertexBuffer(GL, kakiKanan4_t);
+  var KAKI_KANAN4_COLORS_t = createColorBuffer(GL, kakiKanan4_t);
+  var KAKI_KANAN4_FACES_t = createFacesBuffer(GL, kakiKanan4_t);
+  
+  var KAKI_KANAN5_VERTEX_t = createVertexBuffer(GL, kakiKanan5_t);
+  var KAKI_KANAN5_COLORS_t = createColorBuffer(GL, kakiKanan5_t);
+  var KAKI_KANAN5_FACES_t = createFacesBuffer(GL, kakiKanan5_t);
+//  END BUFFER FOR TOM
+//  END BUFFER FOR TOM
+//  END BUFFER FOR TOM
+//  END BUFFER FOR TOM
+//  END BUFFER FOR TOM
+
+
 // BUFFER FOR WORLD
 // BUFFER FOR WORLD
 // BUFFER FOR WORLD
@@ -771,6 +1181,63 @@ var BEEF2_FACES = createFacesBuffer(GL, beef2);
 var BEEF3_VERTEX = createVertexBuffer(GL, beef3);
 var BEEF3_COLORS = createColorBuffer(GL, beef3);
 var BEEF3_FACES = createFacesBuffer(GL, beef3);
+
+
+var DOOR_VERTEX = createVertexBuffer(GL, door);
+var DOOR_COLORS = createColorBuffer(GL, door);
+var DOOR_FACES = createFacesBuffer(GL, door);
+
+var CLOUDA1_VERTEX = createVertexBuffer(GL, cloudA1);
+var CLOUDA1_COLORS = createColorBuffer(GL, cloudA1);
+var CLOUDA1_FACES = createFacesBuffer(GL, cloudA1);
+
+var CLOUDA2_VERTEX = createVertexBuffer(GL, cloudA2);
+var CLOUDA2_COLORS = createColorBuffer(GL, cloudA2);
+var CLOUDA2_FACES = createFacesBuffer(GL, cloudA2);
+
+var CLOUDA3_VERTEX = createVertexBuffer(GL, cloudA3);
+var CLOUDA3_COLORS = createColorBuffer(GL, cloudA3);
+var CLOUDA3_FACES = createFacesBuffer(GL, cloudA3);
+
+var CLOUDA4_VERTEX = createVertexBuffer(GL, cloudA4);
+var CLOUDA4_COLORS = createColorBuffer(GL, cloudA4);
+var CLOUDA4_FACES = createFacesBuffer(GL, cloudA4);
+
+var CLOUDA5_VERTEX = createVertexBuffer(GL, cloudA5);
+var CLOUDA5_COLORS = createColorBuffer(GL, cloudA5);
+var CLOUDA5_FACES = createFacesBuffer(GL, cloudA5);
+
+var CLOUDA6_VERTEX = createVertexBuffer(GL, cloudA6);
+var CLOUDA6_COLORS = createColorBuffer(GL, cloudA6);
+var CLOUDA6_FACES = createFacesBuffer(GL, cloudA6);
+
+var CLOUDB1_VERTEX = createVertexBuffer(GL, cloudB1);
+var CLOUDB1_COLORS = createColorBuffer(GL, cloudB1);
+var CLOUDB1_FACES = createFacesBuffer(GL, cloudB1);
+
+var CLOUDB2_VERTEX = createVertexBuffer(GL, cloudB2);
+var CLOUDB2_COLORS = createColorBuffer(GL, cloudB2);
+var CLOUDB2_FACES = createFacesBuffer(GL, cloudB2);
+
+var CLOUDB3_VERTEX = createVertexBuffer(GL, cloudB3);
+var CLOUDB3_COLORS = createColorBuffer(GL, cloudB3);
+var CLOUDB3_FACES = createFacesBuffer(GL, cloudB3);
+
+var CLOUDB4_VERTEX = createVertexBuffer(GL, cloudB4);
+var CLOUDB4_COLORS = createColorBuffer(GL, cloudB4);
+var CLOUDB4_FACES = createFacesBuffer(GL, cloudB4);
+
+var CLOUDB5_VERTEX = createVertexBuffer(GL, cloudB5);
+var CLOUDB5_COLORS = createColorBuffer(GL, cloudB5);
+var CLOUDB5_FACES = createFacesBuffer(GL, cloudB5);
+
+var CLOUDB6_VERTEX = createVertexBuffer(GL, cloudB6);
+var CLOUDB6_COLORS = createColorBuffer(GL, cloudB6);
+var CLOUDB6_FACES = createFacesBuffer(GL, cloudB6);
+
+var PATH_VERTEX = createVertexBuffer(GL, path);
+var PATH_COLORS = createColorBuffer(GL, path);
+var PATH_FACES = createFacesBuffer(GL, path);
 
 // END BUFFER FOR WORLD
 // END BUFFER FOR WORLD
@@ -1081,9 +1548,9 @@ var BEEF3_FACES = createFacesBuffer(GL, beef3);
   // 
   var KEPALA_MATRIX =  LIBS.get_I4();
 
-  LIBS.translateZ(VIEW_MATRIX, -10);
+  LIBS.translateZ(VIEW_MATRIX, -15);
   LIBS.translateY(VIEW_MATRIX, -1);
-  // LIBS.translateX(VIEW_MATRIX, 1);
+  // LIBS.rotateX(VIEW_MATRIX, .2);
 
 // END MATRIX FOR JERRY
 // END MATRIX FOR JERRY
@@ -1091,6 +1558,74 @@ var BEEF3_FACES = createFacesBuffer(GL, beef3);
 // END MATRIX FOR JERRY
 // END MATRIX FOR JERRY
 // END MATRIX FOR JERRY
+
+// MATRIX FOR TOM
+// MATRIX FOR TOM
+// MATRIX FOR TOM
+// MATRIX FOR TOM
+// MATRIX FOR TOM
+// MATRIX FOR TOM
+
+//
+// TANGAN KIRI
+// 
+var TANGAN_KIRI_ATAS_MATRIX_t = LIBS.get_I4();
+var TANGAN_KIRI_BAWAH_MATRIX_t = LIBS.get_I4();
+
+//
+// TANGAN KANAN
+// 
+var TANGAN_KANAN_ATAS_MATRIX_t = LIBS.get_I4();
+var TANGAN_KANAN_BAWAH_MATRIX_t = LIBS.get_I4();
+
+//
+// KAKI KIRI
+// 
+var KAKI_KIRI_ATAS_MATRIX_t = LIBS.get_I4();
+var KAKI_KIRI_BAWAH_MATRIX_t = LIBS.get_I4();
+
+//
+// KAKI KANAN
+// 
+var KAKI_KANAN_ATAS_MATRIX_t = LIBS.get_I4();
+var KAKI_KANAN_BAWAH_MATRIX_t = LIBS.get_I4();
+
+
+// 
+// BADAN
+// 
+var BADAN_MATRIX_t =  LIBS.get_I4();
+
+// 
+// KEPALA
+// 
+  var KEPALA_MATRIX_t =  LIBS.get_I4();
+
+  var TOM_MATRIX = [
+    // BADAN
+    BADAN_MATRIX_t,
+
+    // KEPALA
+    KEPALA_MATRIX_t,
+
+    // TANGAN KIRI
+    TANGAN_KIRI_ATAS_MATRIX_t, TANGAN_KIRI_BAWAH_MATRIX_t,
+
+    // TANGAN KANAN
+    TANGAN_KANAN_ATAS_MATRIX_t, TANGAN_KANAN_BAWAH_MATRIX_t,
+
+    // KAKI KIRI
+    KAKI_KIRI_ATAS_MATRIX_t, KAKI_KIRI_BAWAH_MATRIX_t,
+
+    // KAKI KANAN
+    KAKI_KANAN_ATAS_MATRIX_t, KAKI_KANAN_BAWAH_MATRIX_t
+];
+// END MATRIX FOR TOM
+// END MATRIX FOR TOM
+// END MATRIX FOR TOM
+// END MATRIX FOR TOM
+// END MATRIX FOR TOM
+// END MATRIX FOR TOM
 
 
 // MATRIX FOR WORLD
@@ -1210,6 +1745,18 @@ var TREE_MATRIX = LIBS.get_I4();
   var KF_KakiKananSpike = 0;
   var KF_KakiKiriSpike = 0;
 
+  //
+  // KAKI TOM
+  // 
+  var KakiKananTimeTom = 0;
+  var KakiKiriTimeTom = 0;
+
+  var KakiKananReverseTom = false;
+  var KakiKiriReverseTom = false;
+
+  var KF_KakiKananTom = 0;
+  var KF_KakiKiriTom = 0;
+
 
   // 
   // BADAN GOYANG 
@@ -1224,9 +1771,11 @@ var TREE_MATRIX = LIBS.get_I4();
   // 
   var RunningTimeJerry = 0;
   var RunningTimeSpike = 0;
+  var RunningTimeTom = 0;
+  var EndingTimeTom = 0;
   var EndingTimeJerry = 0;
   var EndingTimeSpike = 0;
-
+  var spinTime = 3;
 
   /*=========================================================== */
   /*========================= ANIMATE ========================= */
@@ -1239,6 +1788,7 @@ var TREE_MATRIX = LIBS.get_I4();
 
     var deltaTime = (time - then)*10;
     then = time;
+ 
 // CAMERA CONTROL 
 // CAMERA CONTROL 
 // CAMERA CONTROL 
@@ -1298,6 +1848,10 @@ if(drag){
     TANGAN_KANAN_ATAS_MATRIX = LIBS.get_I4();
     TANGAN_KANAN_BAWAH_MATRIX = LIBS.get_I4();
 
+    KAKI_KANAN_ATAS_MATRIX = LIBS.get_I4();
+    KAKI_KANAN_BAWAH_MATRIX = LIBS.get_I4();
+    KAKI_KIRI_BAWAH_MATRIX = LIBS.get_I4();
+    KAKI_KIRI_ATAS_MATRIX = LIBS.get_I4();
 
 // END JERRY RESET
 // END JERRY RESET
@@ -1305,6 +1859,57 @@ if(drag){
 // END JERRY RESET
 // END JERRY RESET
 // END JERRY RESET
+
+// TOM RESET
+// TOM RESET
+// TOM RESET
+// TOM RESET
+// TOM RESET
+// TOM RESET
+// TOM RESET
+// TOM RESET
+
+LIBS.rotateY(TOM_MATRIX, LIBS.degToRad(90));
+
+//   
+// BADAN
+// 
+  BADAN_MATRIX_t = LIBS.get_I4();
+
+//   
+// KEPALA
+// 
+  KEPALA_MATRIX_t =  LIBS.get_I4();
+
+// 
+// TANGAN KIRI
+// 
+  TANGAN_KIRI_ATAS_MATRIX_t = LIBS.get_I4();
+  TANGAN_KIRI_BAWAH_MATRIX_t = LIBS.get_I4();
+
+// 
+// TANGAN KANAN
+// 
+  TANGAN_KANAN_ATAS_MATRIX_t = LIBS.get_I4();
+  TANGAN_KANAN_BAWAH_MATRIX_t = LIBS.get_I4();
+
+// 
+// KAKI KIRI
+// 
+KAKI_KIRI_ATAS_MATRIX_t = LIBS.get_I4();
+KAKI_KIRI_BAWAH_MATRIX_t = LIBS.get_I4();
+
+// 
+// KAKI KANAN
+// 
+  KAKI_KANAN_ATAS_MATRIX_t = LIBS.get_I4();
+  KAKI_KANAN_BAWAH_MATRIX_t = LIBS.get_I4();
+// END TOM RESET
+// END TOM RESET
+// END TOM RESET
+// END TOM RESET
+// END TOM RESET
+// END TOM RESET
 
 
 // RESET FOR SPIKE
@@ -1417,23 +2022,75 @@ LIBS.rotateZ(HOUSE5_MATRIX, LIBS.degToRad(90));
   /*=========================== DRAW ========================== */
   /*=========================================================== */
 
-// DRAW JERRY
-// DRAW JERRY
-// DRAW JERRY
-// DRAW JERRY
-// DRAW JERRY
-// DRAW JERRY
-// DRAW JERRY
+  // 
+  // 
+  // SPIN
+  // 
 
+  // if(time < spinTime){
+  //   var pivotX = 0;
+  //   var pivotY = 0;
+  //   var pivotZ = 4;
+  //   var angle = time;
 
+  //   LIBS.rotateAroundY(KAKI_KIRI_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(KAKI_KIRI_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(KAKI_KANAN_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(KAKI_KANAN_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(BADAN_MATRIX, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(KEPALA_MATRIX, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(TANGAN_KIRI_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(TANGAN_KIRI_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(TANGAN_KANAN_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(TANGAN_KANAN_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+
+  // }
+
+  // if(time < spinTime){
+  //   var pivotX = 0;
+  //   var pivotY = 0;
+  //   var pivotZ = 4.5;
+  //   var angle = time;
+
+  //   LIBS.rotateAroundY(TANGAN_KIRI_S, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(TANGAN_KANAN_S, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(KAKI_KIRI_S, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(KAKI_KANAN_S, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(BADAN_MATRIX_S, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(KEPALA_MATRIX_S, angle, pivotX, pivotY, pivotZ);
+  // }
+
+  // if(time < spinTime){
+  //   var pivotX = 0;
+  //   var pivotY = 0;
+  //   var pivotZ = 4.5;
+  //   var angle = time;
+
+  //   LIBS.rotateAroundY(BADAN_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(KEPALA_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(TANGAN_KIRI_ATAS_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(TANGAN_KIRI_BAWAH_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(TANGAN_KANAN_ATAS_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(TANGAN_KANAN_BAWAH_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(KAKI_KIRI_ATAS_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(KAKI_KIRI_BAWAH_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(KAKI_KANAN_ATAS_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+  //   LIBS.rotateAroundY(KAKI_KANAN_BAWAH_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+ 
+  // }
+
+// DRAW JERRY
+// DRAW JERRY
+// DRAW JERRY
+// DRAW JERRY
+// DRAW JERRY
+// DRAW JERRY
+// DRAW JERRY
 
     // 
     // KAKI NAIK TURUN Jerry
     // 
 
-      KAKI_KIRI_ATAS_MATRIX = LIBS.get_I4();
-      KAKI_KIRI_BAWAH_MATRIX = LIBS.get_I4();
-     
         if(KakiKiriTimeJerry <= -.4){
           KakiKiriReverseJerry = false;
         }else if(KakiKiriTimeJerry >= .4){
@@ -1448,11 +2105,6 @@ LIBS.rotateZ(HOUSE5_MATRIX, LIBS.degToRad(90));
         
         KF_KakiKiriAtasJerry = LIBS.degToRad(KakiKiriTimeJerry);
         KF_KakiKiriBawahJerry = LIBS.degToRad(KakiKiriTimeJerry);
-
-      KAKI_KANAN_ATAS_MATRIX = LIBS.get_I4();
-      KAKI_KANAN_BAWAH_MATRIX = LIBS.get_I4();
-
-
       
       if(KakiKananTimeJerry <= -.4){
         KakiKananReverseJerry = true;
@@ -1509,6 +2161,41 @@ LIBS.rotateZ(HOUSE5_MATRIX, LIBS.degToRad(90));
     LIBS.rotateX(KAKI_KANAN_S, KF_KakiKananSpike);
 
 
+    // 
+    // TOM 
+    // 
+   
+    if(KakiKiriTimeTom <= -.5){
+      KakiKiriReverseTom = false;
+    }else if(KakiKiriTimeTom >= .5){
+      KakiKiriReverseTom = true;
+    }
+
+    if(KakiKiriReverseTom){
+      KakiKiriTimeTom -= deltaTime;
+    }else{
+      KakiKiriTimeTom += deltaTime;
+    }
+    
+  if(KakiKananTimeTom <= -.5){
+    KakiKananReverseTom = true;
+  }else if(KakiKananTimeTom >= .5){
+    KakiKananReverseTom = false;
+  }
+  
+  if(KakiKananReverseTom){
+    KakiKananTimeTom += deltaTime;
+  }else{
+    KakiKananTimeTom -= deltaTime;
+  }
+  KF_KakiKananTom = LIBS.degToRad(KakiKananTimeTom);
+  KF_KakiKiriTom = LIBS.degToRad(KakiKiriTimeTom);
+  
+  LIBS.rotateX(KAKI_KIRI_ATAS_MATRIX_t, KF_KakiKiriTom);
+  LIBS.rotateX(KAKI_KIRI_BAWAH_MATRIX_t, KF_KakiKiriTom);
+  LIBS.rotateX(KAKI_KANAN_ATAS_MATRIX_t, KF_KakiKananTom);
+  LIBS.rotateX(KAKI_KANAN_BAWAH_MATRIX_t, KF_KakiKananTom);
+
     //
     // BADAN
     //
@@ -1538,6 +2225,13 @@ LIBS.rotateZ(HOUSE5_MATRIX, LIBS.degToRad(90));
     LIBS.rotateX(TANGAN_KANAN_ATAS_MATRIX, KF_Badan);
     LIBS.rotateX(TANGAN_KANAN_BAWAH_MATRIX, KF_Badan);
 
+    LIBS.rotateX(BADAN_MATRIX_t, KF_Badan);
+    LIBS.rotateX(KEPALA_MATRIX_t, KF_Badan);
+    LIBS.rotateX(TANGAN_KIRI_BAWAH_MATRIX_t, KF_Badan);
+    LIBS.rotateX(TANGAN_KIRI_ATAS_MATRIX_t, KF_Badan);
+    LIBS.rotateX(TANGAN_KANAN_ATAS_MATRIX_t, KF_Badan);
+    LIBS.rotateX(TANGAN_KANAN_BAWAH_MATRIX_t, KF_Badan);
+
     LIBS.rotateX(TANGAN_KIRI_S, KF_Badan);
     LIBS.rotateX(TANGAN_KANAN_S, KF_Badan);
     LIBS.rotateX(KAKI_KIRI_S, KF_Badan);
@@ -1550,7 +2244,7 @@ LIBS.rotateZ(HOUSE5_MATRIX, LIBS.degToRad(90));
     // LARI KELILING RUMAH
     // 
 
-    if(time < 6.3){
+    if(time < spinTime + 6.3 && time > spinTime){
     RunningTimeJerry += deltaTime*0.2
 
     // 
@@ -1572,11 +2266,12 @@ LIBS.rotateZ(HOUSE5_MATRIX, LIBS.degToRad(90));
     LIBS.rotateY(KAKI_KIRI_BAWAH_MATRIX, RunningTimeJerry);
 
     LIBS.rotateY(BEEF_MATRIX, RunningTimeJerry);
+    
     // 
     // END JERRY LARI
     // 
 
-    }else{
+    }else if (time > spinTime){
       EndingTimeJerry += deltaTime*0.2
 
       LIBS.translateZ(BADAN_MATRIX, EndingTimeJerry);
@@ -1598,11 +2293,59 @@ LIBS.rotateZ(HOUSE5_MATRIX, LIBS.degToRad(90));
 
     }
       
+    // 
+    //  TOM LARI
+    // 
+    if(time < spinTime + 6.7 && time > spinTime){
+      RunningTimeTom += deltaTime*0.18
+  
+      // 
+      // JERRY LARI
+      // 
+      LIBS.rotateY(BADAN_MATRIX_t, RunningTimeTom);
+      LIBS.rotateY(KEPALA_MATRIX_t, RunningTimeTom);
+  
+      LIBS.rotateY(TANGAN_KIRI_ATAS_MATRIX_t, RunningTimeTom);
+      LIBS.rotateY(TANGAN_KIRI_BAWAH_MATRIX_t, RunningTimeTom);
+  
+      LIBS.rotateY(TANGAN_KANAN_ATAS_MATRIX_t, RunningTimeTom);
+      LIBS.rotateY(TANGAN_KANAN_BAWAH_MATRIX_t, RunningTimeTom);
+  
+      LIBS.rotateY(KAKI_KANAN_ATAS_MATRIX_t, RunningTimeTom);
+      LIBS.rotateY(KAKI_KANAN_BAWAH_MATRIX_t, RunningTimeTom);
+      
+      LIBS.rotateY(KAKI_KIRI_ATAS_MATRIX_t, RunningTimeTom);
+      LIBS.rotateY(KAKI_KIRI_BAWAH_MATRIX_t, RunningTimeTom);
+      
+      // 
+      // END JERRY LARI
+      // 
+  
+      }else if (time > spinTime){
+        EndingTimeTom += deltaTime*0.18
+  
+        LIBS.translateZ(BADAN_MATRIX_t, EndingTimeTom);
+        LIBS.translateZ(KEPALA_MATRIX_t, EndingTimeTom);
     
+        LIBS.translateZ(TANGAN_KIRI_ATAS_MATRIX_t, EndingTimeTom);
+        LIBS.translateZ(TANGAN_KIRI_BAWAH_MATRIX_t, EndingTimeTom);
+    
+        LIBS.translateZ(TANGAN_KANAN_ATAS_MATRIX_t, EndingTimeTom);
+        LIBS.translateZ(TANGAN_KANAN_BAWAH_MATRIX_t, EndingTimeTom);
+    
+        LIBS.translateZ(KAKI_KANAN_ATAS_MATRIX_t, EndingTimeTom);
+        LIBS.translateZ(KAKI_KANAN_BAWAH_MATRIX_t, EndingTimeTom);
+        
+        LIBS.translateZ(KAKI_KIRI_ATAS_MATRIX_t, EndingTimeTom);
+        LIBS.translateZ(KAKI_KIRI_BAWAH_MATRIX_t, EndingTimeTom);
+    
+      }
+
+
     // 
       // SPIKE LARI
       // 
-    if(time < 7.41){
+    if(time < spinTime + 7.38 && time > spinTime){
       RunningTimeSpike += deltaTime*0.17
 
       LIBS.rotateY(TANGAN_KIRI_S, RunningTimeSpike);
@@ -1612,12 +2355,9 @@ LIBS.rotateZ(HOUSE5_MATRIX, LIBS.degToRad(90));
       LIBS.rotateY(BADAN_MATRIX_S, RunningTimeSpike);
       LIBS.rotateY(KEPALA_MATRIX_S, RunningTimeSpike);
   
-      if(time >= 6.4){
-
-      }
   
-      }else{
-        EndingTimeSpike += deltaTime*0.2
+      }else if (time > spinTime){
+        EndingTimeSpike += deltaTime*0.17
   
         LIBS.translateZ(TANGAN_KIRI_S, EndingTimeSpike);
         LIBS.translateZ(TANGAN_KANAN_S, EndingTimeSpike);
@@ -1627,6 +2367,190 @@ LIBS.rotateZ(HOUSE5_MATRIX, LIBS.degToRad(90));
         LIBS.translateZ(KEPALA_MATRIX_S, EndingTimeSpike);
   
       }
+
+      // TIME JERRY 
+      // TIME JERRY 
+      // TIME JERRY 
+      // TIME JERRY 
+      // TIME JERRY 
+      // TIME JERRY 
+      // TIME JERRY 
+      // TIME JERRY 
+
+    if (time < spinTime + 1 && time > spinTime){
+    var pivotX = 0;
+    var pivotY = 0;
+    var pivotZ = 4;
+    var angle = 210;
+
+    LIBS.rotateAroundY(KAKI_KIRI_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+    LIBS.rotateAroundY(KAKI_KIRI_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+    LIBS.rotateAroundY(KAKI_KANAN_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+    LIBS.rotateAroundY(KAKI_KANAN_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+    LIBS.rotateAroundY(BADAN_MATRIX, angle, pivotX, pivotY, pivotZ);
+    LIBS.rotateAroundY(KEPALA_MATRIX, angle, pivotX, pivotY, pivotZ);
+    LIBS.rotateAroundY(TANGAN_KIRI_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+    LIBS.rotateAroundY(TANGAN_KIRI_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+    LIBS.rotateAroundY(TANGAN_KANAN_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+    LIBS.rotateAroundY(TANGAN_KANAN_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+
+
+    }else if(time < spinTime + 2 && time > spinTime){
+    var pivotX = 0;
+    var pivotY = 0;
+    var pivotZ = 4;
+    var angle = 270;
+    
+    LIBS.rotateAroundY(KAKI_KIRI_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+    LIBS.rotateAroundY(KAKI_KIRI_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+    LIBS.rotateAroundY(KAKI_KANAN_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+    LIBS.rotateAroundY(KAKI_KANAN_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+    LIBS.rotateAroundY(BADAN_MATRIX, angle, pivotX, pivotY, pivotZ);
+    LIBS.rotateAroundY(KEPALA_MATRIX, angle, pivotX, pivotY, pivotZ);
+    LIBS.rotateAroundY(TANGAN_KIRI_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+    LIBS.rotateAroundY(TANGAN_KIRI_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+    LIBS.rotateAroundY(TANGAN_KANAN_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+    LIBS.rotateAroundY(TANGAN_KANAN_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+
+
+    }
+    else if(time < spinTime + 6.25 && time > spinTime){
+      var pivotX = 0;
+      var pivotY = 0;
+      var pivotZ = 4;
+      var angle = 90;
+      
+      LIBS.rotateAroundY(KAKI_KIRI_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+      LIBS.rotateAroundY(KAKI_KIRI_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+      LIBS.rotateAroundY(KAKI_KANAN_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+      LIBS.rotateAroundY(KAKI_KANAN_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+      LIBS.rotateAroundY(BADAN_MATRIX, angle, pivotX, pivotY, pivotZ);
+      LIBS.rotateAroundY(KEPALA_MATRIX, angle, pivotX, pivotY, pivotZ);
+      LIBS.rotateAroundY(TANGAN_KIRI_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+      LIBS.rotateAroundY(TANGAN_KIRI_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+      LIBS.rotateAroundY(TANGAN_KANAN_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+      LIBS.rotateAroundY(TANGAN_KANAN_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+      
+
+
+      } else if (time > spinTime){
+        var pivotX = 0;
+        var pivotY = 0;
+        var pivotZ = 4;
+        var angle = 0;
+        
+        LIBS.rotateAroundY(KAKI_KIRI_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+        LIBS.rotateAroundY(KAKI_KIRI_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+        LIBS.rotateAroundY(KAKI_KANAN_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+        LIBS.rotateAroundY(KAKI_KANAN_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+        LIBS.rotateAroundY(BADAN_MATRIX, angle, pivotX, pivotY, pivotZ);
+        LIBS.rotateAroundY(KEPALA_MATRIX, angle, pivotX, pivotY, pivotZ);
+        LIBS.rotateAroundY(TANGAN_KIRI_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+        LIBS.rotateAroundY(TANGAN_KIRI_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+        LIBS.rotateAroundY(TANGAN_KANAN_ATAS_MATRIX, angle, pivotX, pivotY, pivotZ);
+        LIBS.rotateAroundY(TANGAN_KANAN_BAWAH_MATRIX, angle, pivotX, pivotY, pivotZ);
+
+            
+        }
+      // END TIME JERRY 
+      // END TIME JERRY 
+      // END TIME JERRY 
+      // END TIME JERRY 
+
+      // TIME SPIKE 
+      // TIME SPIKE 
+      // TIME SPIKE 
+      // TIME SPIKE 
+      // TIME SPIKE 
+      // TIME SPIKE 
+      // TIME SPIKE 
+      // TIME SPIKE 
+
+      if(time < spinTime + 7.38 && time > spinTime){
+        var pivotX = 0;
+        var pivotY = 0;
+        var pivotZ =  4.5;
+        var angle = 90;
+        
+        LIBS.rotateAroundY(TANGAN_KIRI_S, angle, pivotX, pivotY, pivotZ);
+        LIBS.rotateAroundY(TANGAN_KANAN_S, angle, pivotX, pivotY, pivotZ);
+        LIBS.rotateAroundY(KAKI_KIRI_S, angle, pivotX, pivotY, pivotZ);
+        LIBS.rotateAroundY(KAKI_KANAN_S, angle, pivotX, pivotY, pivotZ);
+        LIBS.rotateAroundY(BADAN_MATRIX_S, angle, pivotX, pivotY, pivotZ);
+        LIBS.rotateAroundY(KEPALA_MATRIX_S, angle, pivotX, pivotY, pivotZ);
+  
+  
+        } else if (time > spinTime){
+          var pivotX = 0;
+          var pivotY = 0;
+          var pivotZ =  4.5;
+          var angle = 0;
+  
+          LIBS.rotateAroundY(TANGAN_KIRI_S, angle, pivotX, pivotY, pivotZ);
+          LIBS.rotateAroundY(TANGAN_KANAN_S, angle, pivotX, pivotY, pivotZ);
+          LIBS.rotateAroundY(KAKI_KIRI_S, angle, pivotX, pivotY, pivotZ);
+          LIBS.rotateAroundY(KAKI_KANAN_S, angle, pivotX, pivotY, pivotZ);
+          LIBS.rotateAroundY(BADAN_MATRIX_S, angle, pivotX, pivotY, pivotZ);
+          LIBS.rotateAroundY(KEPALA_MATRIX_S, angle, pivotX, pivotY, pivotZ);
+              
+          }
+        // END TIME SPIKE 
+        // END TIME SPIKE 
+        // END TIME SPIKE 
+        // END TIME SPIKE 
+
+        
+     // TIME TOM 
+      // TIME TOM 
+      // TIME TOM 
+      // TIME TOM 
+      // TIME TOM 
+      // TIME TOM 
+      // TIME TOM 
+      // TIME TOM 
+
+      if(time < spinTime + 6.7 && time > spinTime){
+          var pivotX = 0;
+          var pivotY = 0;
+          var pivotZ = 4;
+          var angle = 90;
+          
+          LIBS.rotateAroundY(KAKI_KIRI_ATAS_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+          LIBS.rotateAroundY(KAKI_KIRI_BAWAH_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+          LIBS.rotateAroundY(KAKI_KANAN_BAWAH_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+          LIBS.rotateAroundY(KAKI_KANAN_ATAS_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+          LIBS.rotateAroundY(BADAN_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+          LIBS.rotateAroundY(KEPALA_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+          LIBS.rotateAroundY(TANGAN_KIRI_ATAS_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+          LIBS.rotateAroundY(TANGAN_KIRI_BAWAH_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+          LIBS.rotateAroundY(TANGAN_KANAN_ATAS_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+          LIBS.rotateAroundY(TANGAN_KANAN_BAWAH_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+          
+    
+    
+          } else if (time > spinTime){
+            var pivotX = 0;
+            var pivotY = 0;
+            var pivotZ = 4;
+            var angle = 0;
+            
+            LIBS.rotateAroundY(KAKI_KIRI_ATAS_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+            LIBS.rotateAroundY(KAKI_KIRI_BAWAH_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+            LIBS.rotateAroundY(KAKI_KANAN_BAWAH_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+            LIBS.rotateAroundY(KAKI_KANAN_ATAS_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+            LIBS.rotateAroundY(BADAN_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+            LIBS.rotateAroundY(KEPALA_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+            LIBS.rotateAroundY(TANGAN_KIRI_ATAS_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+            LIBS.rotateAroundY(TANGAN_KIRI_BAWAH_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+            LIBS.rotateAroundY(TANGAN_KANAN_ATAS_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+            LIBS.rotateAroundY(TANGAN_KANAN_BAWAH_MATRIX_t, angle, pivotX, pivotY, pivotZ);
+    
+                
+            }
+          // END TIME TOM 
+          // END TIME TOM 
+          // END TIME TOM 
+          // END TIME TOM 
 
 
     // TUBE ATAS
@@ -2280,7 +3204,7 @@ LIBS.rotateZ(HOUSE5_MATRIX, LIBS.degToRad(90));
     
     
     
-    // DRAW WORLD
+       // DRAW WORLD
     // DRAW WORLD
     // DRAW WORLD
     // DRAW WORLD
@@ -2378,12 +3302,221 @@ LIBS.rotateZ(HOUSE5_MATRIX, LIBS.degToRad(90));
 
     GL.drawElements(GL.TRIANGLES, house5.faces.length, GL.UNSIGNED_SHORT, 0);
 
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, DOOR_VERTEX);
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, DOOR_COLORS);
+    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, DOOR_FACES);
+
+    GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+    GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, WORLD_MATRIX);
+
+    GL.drawElements(GL.TRIANGLES, door.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDA1_VERTEX);
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDA1_COLORS);
+    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, CLOUDA1_FACES);
+
+    GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+    GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, WORLD_MATRIX);
+
+    GL.drawElements(GL.TRIANGLES, cloudA1.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDA2_VERTEX);
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDA2_COLORS);
+    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, CLOUDA2_FACES);
+
+    GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+    GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, WORLD_MATRIX);
+
+    GL.drawElements(GL.TRIANGLES, cloudA2.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDA3_VERTEX);
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDA3_COLORS);
+    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, CLOUDA3_FACES);
+
+    GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+    GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, WORLD_MATRIX);
+
+    GL.drawElements(GL.TRIANGLES, cloudA3.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDA4_VERTEX);
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDA4_COLORS);
+    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, CLOUDA4_FACES);
+
+    GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+    GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, WORLD_MATRIX);
+
+    GL.drawElements(GL.TRIANGLES, cloudA4.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDA5_VERTEX);
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDA5_COLORS);
+    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, CLOUDA5_FACES);
+
+    GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+    GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, WORLD_MATRIX);
+
+    GL.drawElements(GL.TRIANGLES, cloudA5.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDA6_VERTEX);
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDA6_COLORS);
+    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, CLOUDA6_FACES);
+
+    GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+    GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, WORLD_MATRIX);
+
+    GL.drawElements(GL.TRIANGLES, cloudA6.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDB1_VERTEX);
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDB1_COLORS);
+    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, CLOUDB1_FACES);
+
+    GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+    GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, WORLD_MATRIX);
+
+    GL.drawElements(GL.TRIANGLES, cloudB1.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDB2_VERTEX);
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDB2_COLORS);
+    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, CLOUDB2_FACES);
+
+    GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+    GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, WORLD_MATRIX);
+
+    GL.drawElements(GL.TRIANGLES, cloudB2.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDB3_VERTEX);
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDB3_COLORS);
+    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, CLOUDB3_FACES);
+
+    GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+    GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, WORLD_MATRIX);
+
+    GL.drawElements(GL.TRIANGLES, cloudB3.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDB4_VERTEX);
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDB4_COLORS);
+    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, CLOUDB4_FACES);
+
+    GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+    GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, WORLD_MATRIX);
+
+    GL.drawElements(GL.TRIANGLES, cloudB4.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDB5_VERTEX);
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDB5_COLORS);
+    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, CLOUDB5_FACES);
+
+    GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+    GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, WORLD_MATRIX);
+
+    GL.drawElements(GL.TRIANGLES, cloudB5.faces.length, GL.UNSIGNED_SHORT, 0);
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDB6_VERTEX);
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, CLOUDB6_COLORS);
+    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, CLOUDB6_FACES);
+
+    GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+    GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, WORLD_MATRIX);
+
+    GL.drawElements(GL.TRIANGLES, cloudB6.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, PATH_VERTEX);
+    GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ARRAY_BUFFER, PATH_COLORS);
+    GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+    GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, PATH_FACES);
+
+    GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+    GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+    GL.uniformMatrix4fv(_MMatrix, false, WORLD_MATRIX);
+
+    GL.drawElements(GL.TRIANGLES, path.faces.length, GL.UNSIGNED_SHORT, 0);
     // END DRAW WORLD
     // END DRAW WORLD
     // END DRAW WORLD
     // END DRAW WORLD
     // END DRAW WORLD
     // END DRAW WORLD
+
 
     
 // DRAW TREE
@@ -3045,6 +4178,649 @@ LIBS.rotateZ(HOUSE5_MATRIX, LIBS.degToRad(90));
 // END DRAW SPIKE
 // END DRAW SPIKE
 
+// DRAW TOM
+// DRAW TOM
+// DRAW TOM
+// DRAW TOM
+// DRAW TOM
+// DRAW TOM
+// DRAW TOM
+// DRAW TOM
+// DRAW TOM
+// DRAW TOM
+
+// TUBE ATAS
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KIRI1_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KIRI1_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TANGAN_KIRI1_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KIRI_ATAS_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, tanganKiri1_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+// EKOR
+GL.bindBuffer(GL.ARRAY_BUFFER, EKOR_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, EKOR_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, EKOR_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, BADAN_MATRIX_t);
+
+
+GL.drawArrays(GL.LINE_STRIP, 0, ekor_t.vertices.length/3);
+
+//BALL ATAS
+
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KIRI2_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KIRI2_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TANGAN_KIRI2_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KIRI_ATAS_MATRIX_t);
+
+
+GL.drawElements(GL.TRIANGLES, tanganKiri2_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+//BALL Bawah
+
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KIRI3_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KIRI3_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TANGAN_KIRI3_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KIRI_BAWAH_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, tanganKiri3_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+// TUBE BAWAH
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KIRI4_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KIRI4_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TANGAN_KIRI4_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KIRI_BAWAH_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, tanganKiri4_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+// SPHERE TANGAN
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KIRI5_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KIRI5_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TANGAN_KIRI5_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KIRI_BAWAH_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, tanganKiri5_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+// 
+// TANGAN KANAN
+//
+
+// TUBE ATAS
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KANAN1_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KANAN1_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TANGAN_KANAN1_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KANAN_ATAS_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, tanganKanan1_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+//BALL ATAS
+
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KANAN2_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KANAN2_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TANGAN_KANAN2_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KANAN_ATAS_MATRIX_t);
+
+
+GL.drawElements(GL.TRIANGLES, tanganKanan2_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+//BALL Bawah
+
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KANAN3_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KANAN3_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TANGAN_KANAN3_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KANAN_BAWAH_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, tanganKanan3_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+// TUBE BAWAH
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KANAN4_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KANAN4_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TANGAN_KANAN4_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KANAN_BAWAH_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, tanganKanan4_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+// SPHERE TANGAN
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KANAN5_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, TANGAN_KANAN5_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TANGAN_KANAN5_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, TANGAN_KANAN_BAWAH_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, tanganKanan5_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+// 
+// BADAN
+// 
+
+GL.bindBuffer(GL.ARRAY_BUFFER, BADAN1_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, BADAN1_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, BADAN1_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, BADAN_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, badan1_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+// Badan Warna
+GL.bindBuffer(GL.ARRAY_BUFFER, BADAN2_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, BADAN2_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, BADAN2_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, BADAN_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, badan2_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+// 
+// BADAN BAWAH
+// 
+
+GL.bindBuffer(GL.ARRAY_BUFFER, BADAN_BAWAH_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, BADAN_BAWAH_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, BADAN_BAWAH_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, BADAN_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, badanBawah_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+// 
+// LEHER
+// 
+
+GL.bindBuffer(GL.ARRAY_BUFFER, LEHER1_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, LEHER1_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, LEHER1_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, BADAN_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, leher1_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+// 
+// KEPALA
+// 
+
+GL.bindBuffer(GL.ARRAY_BUFFER, KEPALA1_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, KEPALA1_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, KEPALA1_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, kepala1_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+
+GL.bindBuffer(GL.ARRAY_BUFFER, KEPALA2_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, KEPALA2_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, KEPALA2_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, kepala2_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+// 
+// TELINGA
+// 
+
+// Kanan
+
+GL.bindBuffer(GL.ARRAY_BUFFER, TELINGA1_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, TELINGA1_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TELINGA1_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, telinga1_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+// Kiri
+
+GL.bindBuffer(GL.ARRAY_BUFFER, TELINGA2_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, TELINGA2_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TELINGA2_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, telinga2_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+ // Kanan
+
+ GL.bindBuffer(GL.ARRAY_BUFFER, TELINGA3_VERTEX_t);
+ GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+ 
+ GL.bindBuffer(GL.ARRAY_BUFFER, TELINGA3_COLORS_t);
+ GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+ 
+ GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TELINGA3_FACES_t);
+ 
+ GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+ GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+ GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX_t);
+ 
+ GL.drawElements(GL.TRIANGLES, telinga3_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+ // Kiri
+
+ GL.bindBuffer(GL.ARRAY_BUFFER, TELINGA4_VERTEX_t);
+ GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+ 
+ GL.bindBuffer(GL.ARRAY_BUFFER, TELINGA4_COLORS_t);
+ GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+ 
+ GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, TELINGA4_FACES_t);
+ 
+ GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+ GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+ GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX_t);
+ 
+ GL.drawElements(GL.TRIANGLES, telinga4_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+// 
+// MULUT 
+// 
+
+// RAHANG
+GL.bindBuffer(GL.ARRAY_BUFFER, RAHANG_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, RAHANG_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, RAHANG_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, rahang_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+// 
+// KAKI KIRI
+//
+
+// TUBE ATAS
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KIRI1_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KIRI1_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, KAKI_KIRI1_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KAKI_KIRI_ATAS_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, kakiKiri1_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+//BALL ATAS
+
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KIRI2_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KIRI2_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, KAKI_KIRI2_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KAKI_KIRI_ATAS_MATRIX_t);
+
+
+GL.drawElements(GL.TRIANGLES, kakiKiri2_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+//BALL Bawah
+
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KIRI3_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KIRI3_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, KAKI_KIRI3_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KAKI_KIRI_BAWAH_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, kakiKiri3_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+// TUBE BAWAH
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KIRI4_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KIRI4_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, KAKI_KIRI4_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KAKI_KIRI_BAWAH_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, kakiKiri4_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+// SPHERE KAKI
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KIRI5_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KIRI5_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, KAKI_KIRI5_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KAKI_KIRI_BAWAH_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, kakiKiri5_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+// 
+// MATA 
+// 
+
+// RETINA
+GL.bindBuffer(GL.ARRAY_BUFFER, MATA1_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, MATA1_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, MATA1_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, mata1_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+// PUPIL
+
+GL.bindBuffer(GL.ARRAY_BUFFER, MATA2_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, MATA2_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, MATA2_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX_t);
+
+
+GL.drawElements(GL.TRIANGLES, mata2_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+// RETINA
+GL.bindBuffer(GL.ARRAY_BUFFER, MATA3_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, MATA3_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, MATA3_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, mata3_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+// PUPIL
+GL.bindBuffer(GL.ARRAY_BUFFER, MATA4_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, MATA4_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, MATA4_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, mata4_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+// HIDUNG
+GL.bindBuffer(GL.ARRAY_BUFFER, HIDUNG_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, HIDUNG_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, HIDUNG_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KEPALA_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, hidung_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+// 
+// KAKI KANAN
+//
+
+// TUBE ATAS
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KANAN1_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KANAN1_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, KAKI_KANAN1_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KAKI_KANAN_ATAS_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, kakiKanan1_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+//BALL ATAS
+
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KANAN2_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KANAN2_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, KAKI_KANAN2_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KAKI_KANAN_ATAS_MATRIX_t);
+
+
+GL.drawElements(GL.TRIANGLES, kakiKanan2_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+//BALL Bawah
+
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KANAN3_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KANAN3_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, KAKI_KANAN3_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KAKI_KANAN_BAWAH_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, kakiKanan3_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+// TUBE BAWAH
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KANAN4_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KANAN4_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, KAKI_KANAN4_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KAKI_KANAN_BAWAH_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, kakiKanan4_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+// SPHERE KAKI
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KANAN5_VERTEX_t);
+GL.vertexAttribPointer(_position, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ARRAY_BUFFER, KAKI_KANAN5_COLORS_t);
+GL.vertexAttribPointer(_color, 3, GL.FLOAT, false, 0, 0);
+
+GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, KAKI_KANAN5_FACES_t);
+
+GL.uniformMatrix4fv(_PMatrix, false, PROJECTION_MATRIX);
+GL.uniformMatrix4fv(_VMatrix, false, VIEW_MATRIX);
+GL.uniformMatrix4fv(_MMatrix, false, KAKI_KANAN_BAWAH_MATRIX_t);
+
+GL.drawElements(GL.TRIANGLES, kakiKanan5_t.faces.length, GL.UNSIGNED_SHORT, 0);
+
+
+// END DRAW TOM
+// END DRAW TOM
+// END DRAW TOM
+// END DRAW TOM
+// END DRAW TOM
+// END DRAW TOM
+// END DRAW TOM
 
     GL.flush();
 

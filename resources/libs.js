@@ -147,7 +147,32 @@ var LIBS = {
     out[14] = 0;
     out[15] = 1;
     return out;
-  }
+  },
+  translate : function (m, x, y, z) {
+    
+    m[12] += m[0] * x + m[4] * y + m[8] * z;
+    m[13] += m[1] * x + m[5] * y + m[9] * z;
+    m[14] += m[2] * x + m[6] * y + m[10] * z;
+  },
+
+  rotateAroundX : function (m, angle, x, y, z) {
+    LIBS.translate(m, x, y, z); 
+    LIBS.rotateX(m, angle); 
+    LIBS.translate(m, -x, -y, -z); 
+  },
+
+  rotateAroundY : function (m, angle, x, y, z) {
+    LIBS.translate(m, x, y, z); 
+    LIBS.rotateY(m, angle); 
+    LIBS.translate(m, -x, -y, -z); 
+  },
+
+  rotateAroundZ: function (m, angle, x, y, z) {
+    LIBS.translate(m, x, y, z); 
+    LIBS.rotateZ(m, angle); 
+    LIBS.translate(m, -x, -y, -z); 
+  },
+
 
 
 };
